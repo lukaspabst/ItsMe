@@ -1,0 +1,35 @@
+.custom-bars-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+
+  div {
+    height: 3px;
+    background-color: #fff;
+    margin-bottom: 3px;
+    transition: width 0.5s ease, background-color 0.5s ease;
+    border-radius: 1.5px;
+    margin-left: auto;
+    &:nth-child(2) {
+      width: 75%;
+    }
+
+    &:nth-child(3) {
+      width: 50%;
+    }
+  }
+
+  &.active {
+    div {
+      width: 100%;
+      background-color: var(--secondary-color);
+    }
+  }
+
+  &:hover {
+    div {
+      width: 100%;
+      background-color: var(--secondary-color);
+    }
+  }
+}
