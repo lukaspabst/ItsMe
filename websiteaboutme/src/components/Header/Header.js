@@ -21,6 +21,7 @@ const AnimatedLi = styled.li`
 `;
 
 const Header = () => {
+
     const [isActive, setIsActive] = useState(false);
     const toggleMobileMenu = () => {
         setIsActive(!isActive);

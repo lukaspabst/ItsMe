@@ -1,27 +1,61 @@
 .aboutMe-wrapper {
-  position: absolute;
-  display: flex;
-  left: 25vw;
-  justify-content: center;
-  top: 40%;
-  width: 50vw;
-  flex-direction: column;
-
-  h1 span, p span {
-    display: inline-block;
-    opacity: 0; // Start with opacity set to 0
-  }
-
-  @keyframes flyIn {
-    0% {
+    position: absolute;
+    display: flex;
+    left: 25vw;
+    justify-content: center;
+    top: 30%;
+    width: 50vw;
+    flex-direction: column;
+    @media screen and (max-width: 768px) {
+      top: 120px;
+    }
+    h1{
+      font-size: 48px;
+    }
+    p{
+      font-size: 32px;
+    }
+    h1 span, p span {
+      display: inline-block;
       opacity: 0;
-      transform: translateY(-100%);
     }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
+
+    h1.in-view span, p.in-view span {
+      animation: flyIn 1s ease forwards;
     }
-  }
+
+    h1.fade-out span, p.fade-out span {
+      animation: fadeOut 0.5s ease-out forwards;
+    }
+
+    @keyframes flyIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes flyOut {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
 }
 .scroll-toAbout {
   position: absolute;
@@ -37,5 +71,40 @@
 
   &:hover {
     background-color: #2980b9;
+  }
+}
+.typing-wrapper{
+  position: absolute;
+  display: inline-block;
+  left: 25vw;
+  top: calc(55% + 25px);
+  width: auto;
+  z-index: 10;
+  transition: opacity 0.5s ease; /* Adjust the total duration for both fade-in and fade-out */
+}
+.wrap {
+  overflow: hidden;
+  border-right: .1em solid white;
+  white-space: nowrap;
+  font-size: 48px;
+  width: auto;
+  letter-spacing: 0.05em;
+  animation: blink-caret 0.75s step-end infinite;
+}
+.typing-wrapper.fade-in {
+  opacity: 1;
+  transition-duration: 2.5s; /* Set the fade-in duration to be shorter */
+}
+
+.typing-wrapper.fade-out {
+  opacity: 0;
+}
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
   }
 }

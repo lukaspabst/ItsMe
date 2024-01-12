@@ -20,8 +20,9 @@
   height: 80px;
   background-color: transparent;
   z-index: 999;
-  width: 100%;
+  width: 100vw;
   justify-content: space-between;
+  top:0;
 }
 .menu-desktop-header {
   display: flex;
@@ -140,7 +141,7 @@
     position: relative;
   }
   @media (max-width: 275px) {
-    h1 {
+    .logo-wrapper-header h1 {
       display: none;
     }
   }

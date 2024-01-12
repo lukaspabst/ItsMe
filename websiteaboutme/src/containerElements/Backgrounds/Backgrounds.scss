@@ -11,6 +11,7 @@ body {
   position: relative;
   z-index: -1;
   perspective: 1000px;
+
 }
 
 .background {
@@ -123,16 +124,29 @@ body {
   font-size: 18px;
   text-align: right;
   pointer-events: none;
-  animation: message-frames 1.5s ease 5s forwards;
+  animation: fade-in 1.5s ease forwards;
   opacity: 0;
+  animation-delay: 5s;
+}
 
-  @keyframes message-frames {
-    from {
-      opacity: 0;
-    }
+.message.fade-out {
+  animation: fade-out 0.5s ease forwards;
+}
 
-    to {
-      opacity: 1;
-    }
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
