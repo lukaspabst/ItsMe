@@ -1,7 +1,8 @@
 import React from 'react';
 import './Backgrounds.scss';
+import {useInView} from "react-intersection-observer";
 
-const AbstractBackground = () => {
+const AbstractBackground = ({inView}) => {
 
     return (
         <div className="container">
@@ -10,7 +11,7 @@ const AbstractBackground = () => {
                 alt="Background"
                 className="background"
             />
-            <p className="message">
+            <p className={`message ${inView ? 'fade-in' : 'fade-out'}`}>
                 all your dreams can come true<br/>
                 if you have the courage to pursue them
             </p>

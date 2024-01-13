@@ -6,3 +6,39 @@
 
   color:#fff;
 }
+@font-face {
+  font-family: 'minimal';
+  src: url('../public/Fonts/minimal/minimal.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'omegle';
+  src: url('../public/Fonts/omegle/OMEGLE.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'prisma';
+  src: url('../public/Fonts/prisma/Prisma.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'brightness';
+  src: url('../public/Fonts/brightness/Brightness.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'aquatic';
+  src: url('../public/Fonts/aquatic_2/AQUATIC.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+* {
+  font-family: 'minimal', sans-serif;
+}

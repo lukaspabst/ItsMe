@@ -1,7 +1,25 @@
 {
   "menu": {
     "about": "Über mich",
+    "skills": "Fähigkeiten",
     "projects": "Projekte",
     "contact": "Kontakt"
+  },
+  "landingPage": {
+    "welcome": "Willkommen,",
+    "aboutMeText": "Ich bin Lukas, 22, und das Programmieren ist meine Leidenschaft."
+  },
+  "aboutMe": {
+    "yourInterestsOrProfession": "deine Interessen oder Beruf",
+    "greeting": "Hi, ich bin Lukas Pabst, ein Softwareentwickler aus Mühlhausen/Thüringen.",
+    "work": "Derzeit arbeite ich als Softwareentwickler bei Finanz-Data GmbH, Gotha.",
+    "myCurrentFocus": "Mein Schwerpunkt liegt in: ",
+    "backendDevelopment": "Backend-Entwicklung mit Java",
+    "restServiceDevelopment": "Entwicklung von REST-Services mit Java und Spring Boot",
+    "education": "Bachelor in Wirtschaftsinformatik",
+    "languages": "Fließend in Deutsch (Muttersprache) und sicher in Englisch (schriftlich und mündlich).",
+    "hobbies": "Zu meinen Hobbys gehören Kraftsport, Programmieren und Lesen.",
+    "contact": "Kontaktieren Sie mich unter lukas.pabst@outlook.de oder benutzen Sie das eingebaute Kontakt Komponente",
+    "lookingForward": "Freue mich darauf, Kontakte zu knüpfen und spannende Möglichkeiten zu besprechen!"
   }
 }

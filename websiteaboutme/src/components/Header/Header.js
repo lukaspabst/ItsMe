@@ -21,6 +21,7 @@ const AnimatedLi = styled.li`
 `;
 
 const Header = () => {
+
     const [isActive, setIsActive] = useState(false);
     const toggleMobileMenu = () => {
         setIsActive(!isActive);
@@ -31,9 +32,11 @@ const Header = () => {
     };
     const {t, i18n} = useTranslation();
     const changeLanguage = (language) => {
+
         i18n.changeLanguage(language);
         localStorage.setItem('selectedLanguage', language);
         setShowDropdown(false);
+        window.location.reload();
     };
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);
@@ -42,26 +45,30 @@ const Header = () => {
         <header>
             <nav className="header-navbar">
                 <div className="logo-wrapper-header">
-                    <img src="/assets/logo/logo_withoutBG_white.png" alt="logo" className="logo-header" />
+                    <img src="/assets/logo/logo_withoutBG_white.png" alt="logo" className="logo-header"/>
                     <h1>Lukas Pabst </h1>
                 </div>
                 <div className="menu-desktop-header">
                     <ul>
                         <li className="dropdown-container">
-                                <button className="dropdown-button" onClick={toggleDropdown}>
-                                    {i18n.language.toUpperCase()}
-                                </button>
-                                {showDropdown && (
-                                    <div className="dropdown-content">
-                                        <button className="button" onClick={() => changeLanguage('en')}>EN</button>
-                                        <button className="button" onClick={() => changeLanguage('de')}>DE</button>
-                                    </div>
-                                )}
+                            <button className="dropdown-button" onClick={toggleDropdown}>
+                                {i18n.language.toUpperCase()}
+                            </button>
+                            {showDropdown && (
+                                <div className="dropdown-content">
+                                    <button className="button" onClick={() => changeLanguage('en')}>EN</button>
+                                    <button className="button" onClick={() => changeLanguage('de')}>DE</button>
+                                </div>
+                            )}
                         </li>
-
                         <li>
                             <Link to="/" onClick={closeMobileMenu}>
                                 <div>{t('menu.about')}</div>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/skills" onClick={closeMobileMenu}>
+                                <div>{t('menu.skills')}</div>
                             </Link>
                         </li>
                         <li>
@@ -77,7 +84,22 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="menu-mobile-header">
-                    <CustomBarsIcon onIconClick={toggleMobileMenu} isActive={isActive} setIsActive={setIsActive} />
+
+                    <div className="dropdown-container">
+                        <div>
+                            <button className="dropdown-button" onClick={toggleDropdown}>
+                                {i18n.language.toUpperCase()}
+                            </button>
+                            </div>
+                            {showDropdown && (
+                                <div className="dropdown-content">
+                                    <button className="button" onClick={() => changeLanguage('en')}>EN</button>
+                                    <button className="button" onClick={() => changeLanguage('de')}>DE</button>
+                                </div>
+                            )}
+                        </div>
+
+                    <CustomBarsIcon onIconClick={toggleMobileMenu} isActive={isActive} setIsActive={setIsActive}/>
                 </div>
 
                 {isActive && (
@@ -88,14 +110,19 @@ const Header = () => {
                                     <div className="mobile-menu-element">{t('menu.about')}</div>
                                 </Link>
                             </AnimatedLi>
-                            <AnimatedLi delay="0.5s">
+                            <AnimatedLi delay="0.25s">
                                 <Link to="/projects" onClick={closeMobileMenu}>
                                     <div className="mobile-menu-element">{t('menu.projects')}</div>
                                 </Link>
                             </AnimatedLi>
-                            <AnimatedLi delay="1s">
+                            <AnimatedLi delay="0.5s">
                                 <Link to="/contact" onClick={closeMobileMenu}>
                                     <div className="mobile-menu-element">{t('menu.contact')}</div>
+                                </Link>
+                            </AnimatedLi>
+                            <AnimatedLi delay="0.75s">
+                                <Link to="/skills" onClick={closeMobileMenu}>
+                                    <div className="mobile-menu-element">{t('menu.skills')}</div>
                                 </Link>
                             </AnimatedLi>
                         </ul>
