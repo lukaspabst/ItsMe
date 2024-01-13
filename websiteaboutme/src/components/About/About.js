@@ -97,9 +97,9 @@ const AboutPage = () => {
                             <div
                                 style={{
                                     position: 'absolute',
-                                    top: '50%',
+                                    top: '40%',
                                     left: '75%',
-                                    transform: 'translate(-50%, -50%)'
+                                    transform: 'translate(-50%, -40%)'
                                 }}>
                                 <div
                                     className={`image-overlay-toRevealHover ${inView ? 'is-visible' : 'is-hidden'} ${isHovered ? 'is-hidden' : ''}`}>Hover
