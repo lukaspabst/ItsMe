@@ -1,8 +1,25 @@
 {
-    "menu": {
-      "about": "About Me",
-      "skills": "Skills",
-      "projects": "Projects",
-      "contact": "Contact"
+  "menu": {
+    "about": "About Me",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "landingPage": {
+    "welcome": "Welcome,",
+    "aboutMeText": "I am Lukas, 22, and coding is my passion."
+  },
+  "aboutMe": {
+    "headline": "About Me",
+    "greeting": "Hi, I'm Lukas Pabst, a Software Developer based in Mühlhausen/Thüringen.",
+    "work": "Currently working as a Software Developer at Finanz-Data GmbH, Gotha.",
+    "myCurrentFocus": "Currently, my work is centered around: ",
+    "backendDevelopment": "Backend-Development with Java",
+    "restServiceDevelopment": "REST-Service-Development with Java and Spring Boot",
+    "education": "Bachelor degree in Business Informatics",
+    "languages": "Fluent in German (native) and proficient in English (written and spoken).",
+    "hobbies": "Hobbies include weightlifting, programming and reading.",
+    "contact": "Reach out to me at lukas.pabst@outlook.de or use the build in Contact",
+    "lookingForward": "Looking forward to connecting and discussing exciting opportunities!"
   }
 }

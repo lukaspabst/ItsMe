@@ -32,9 +32,11 @@ const Header = () => {
     };
     const {t, i18n} = useTranslation();
     const changeLanguage = (language) => {
+
         i18n.changeLanguage(language);
         localStorage.setItem('selectedLanguage', language);
         setShowDropdown(false);
+        window.location.reload();
     };
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);

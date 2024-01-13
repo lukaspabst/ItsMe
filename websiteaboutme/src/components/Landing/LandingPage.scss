@@ -1,20 +1,49 @@
+.landingPage-wrapper{
+  position:absolute;
+  top:30%;
+  left:25vw;
+  display: flex;
+  flex-direction: column;
+  gap:5px;
+  z-index: 10;
+  width: auto;
+  height: auto;
+  @media screen and (max-width: 768px) {
+    top: 120px;
+    .aboutMe-wrapper {
+      h1{
+        font-size: 42px;
+        font-weight: bold;
+        white-space: nowrap;
+      }
+      p{
+        font-size: 30px;
+      }
+    }
+    .wrap{
+      font-size: 25px;
+    }
+  }
+}
+
 .aboutMe-wrapper {
-    position: absolute;
     display: flex;
-    left: 25vw;
     justify-content: center;
-    top: 30%;
+
     width: 50vw;
     flex-direction: column;
-    @media screen and (max-width: 768px) {
-      top: 120px;
-    }
+
     h1{
-      font-size: 48px;
+      font-size: 56px;
+      font-weight: bold;
+      white-space: nowrap;
     }
-    p{
-      font-size: 32px;
-    }
+  p {
+
+    font-size: 40px;
+
+  }
+
     h1 span, p span {
       display: inline-block;
       opacity: 0;
@@ -74,26 +103,23 @@
   }
 }
 .typing-wrapper{
-  position: absolute;
-  display: inline-block;
-  left: 25vw;
-  top: calc(55% + 25px);
   width: auto;
   z-index: 10;
-  transition: opacity 0.5s ease; /* Adjust the total duration for both fade-in and fade-out */
+  transition: opacity 1.5s ease-in-out;
 }
 .wrap {
   overflow: hidden;
   border-right: .1em solid white;
   white-space: nowrap;
   font-size: 48px;
+  font-weight: bold;
   width: auto;
   letter-spacing: 0.05em;
-  animation: blink-caret 0.75s step-end infinite;
+  animation: blink-caret 0.75s infinite;
 }
 .typing-wrapper.fade-in {
   opacity: 1;
-  transition-duration: 2.5s; /* Set the fade-in duration to be shorter */
+  transition-duration: 2.5s;
 }
 
 .typing-wrapper.fade-out {

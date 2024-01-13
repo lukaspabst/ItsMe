@@ -2,14 +2,16 @@ import React, {useEffect, useState} from 'react';
 import AbstractBackground from '../../containerElements/Backgrounds/AbstractBackground';
 import './LandingPage.scss';
 import {useInView} from "react-intersection-observer";
+import {useTranslation} from "react-i18next";
 
 const LandingPage = () => {
     const { ref, inView } = useInView({
         threshold: 0.75,
         triggerOnce: false
     });
-    const headline = 'About me';
-    const text = 'This is where you can provide information about yourself.';
+    const { t } = useTranslation();
+    const welcomeHeadline = t('landingPage.welcome');
+    const aboutMeText = t('landingPage.aboutMeText');
 
     useEffect(() => {
         const spans = document.querySelectorAll('.aboutMe-wrapper h1 span, .aboutMe-wrapper p span');
@@ -20,12 +22,13 @@ const LandingPage = () => {
         });
     }, [inView]);
 
-    var TxtType = function(el, toRotate, period) {
+    var TxtType = function(el, toRotate, period,delayBeforeStart) {
         this.toRotate = toRotate;
         this.el = el;
         this.loopNum = 0;
-        this.period = parseInt(period, 10) || 2000;
+        this.period = parseInt(period, 10) || 3000;
         this.txt = '';
+        this.delayBeforeStart = parseInt(delayBeforeStart, 10) || 2000;
         this.tick();
         this.isDeleting = false;
     };
@@ -53,7 +56,7 @@ const LandingPage = () => {
         } else if (this.isDeleting && this.txt === '') {
             this.isDeleting = false;
             this.loopNum++;
-            delta = 500;
+            delta = this.delayBeforeStart;
         }
 
         setTimeout(function() {
@@ -70,40 +73,41 @@ const LandingPage = () => {
                 new TxtType(elements[i], JSON.parse(toRotate), period);
             }
         }
-        // INJECT CSS
-        var css = document.createElement("style");
-        css.type = "text/css";
-        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
-        document.body.appendChild(css);
     };
 
     return (
         <div ref={ref}>
             <AbstractBackground inView={inView}/>
+            <div className="landingPage-wrapper">
+                    <div className="aboutMe-wrapper">
+                        <h1>
+                            {welcomeHeadline.split('').map((char, idx) => (
+                                <span className={inView ? "" : "fade-out"} key={idx}>
+                                    {char.trim() !== '' ? char : '\u00A0'}
+                                </span>
+                            ))}
+                        </h1>
+                        <p>
+                            {aboutMeText.split(' ').map((word, idx) => (
+                                <span key={idx}>
+                                    {word.split('').map((char, charIdx) => (
+                                        <span className={inView ? "" : "fade-out"}
+                                              key={charIdx}>
+                                            {char}
+                                        </span>
+                                    ))}
+                                    &nbsp;
+                                </span>
+                            ))}
+                        </p>
+                    </div>
+                    <div className={`typing-wrapper ${inView ? 'fade-in' : 'fade-out'}`}>
 
-            <div className="aboutMe-wrapper">
-                <h1>
-                    {headline.split('').map((char, idx) => (
-                        <span className={inView ? "" : "fade-out"} key={idx}>
-                            {char.trim() !== '' ? char : '\u00A0'}
-                        </span>
-                    ))}
-                </h1>
-                <p>
-                    {text.split('').map((char, idx) => (
-                        <span className={inView ? "" : "fade-out"} key={idx}>
-                            {char.trim() !== '' ? char : '\u00A0'}
-                        </span>
-                    ))}
-                </p>
-            </div>
-            <div className={`typing-wrapper ${inView ? 'fade-in' : 'fade-out'}`}>
-
-                <p className="typewriter" data-period="2000"
-                   data-type='["Full-Stack Developer", "Java Developer", "Also JavaScript", "Anime Fan", "Gym Addicted"]'>
-                    <span className="wrap"></span>
-                </p>
-
+                        <p className="typewriter" data-period="5000" data-delay-before-start="1000"
+                           data-type='["Full-Stack Developer", "Java and JavaScript", "Spring and React", "Anime Fan", "Gym Addicted"]'>
+                            <span className="wrap"></span>
+                        </p>
+                    </div>
             </div>
         </div>
     );
