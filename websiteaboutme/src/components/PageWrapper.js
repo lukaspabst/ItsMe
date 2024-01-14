@@ -3,6 +3,8 @@ import LandingPage from './Landing/LandingPage';
 import AboutPage from './About/About';
 import './PageWrapper.scss'
 import {CustomArrowIconDown, CustomArrowIconUP} from "../containerElements/CustomArrows/CustomArrows";
+import {useGlobalDispatch, useGlobalState} from "../GlobalContext";
+
 
 function PageWrapper() {
     const sectionRefs = {
@@ -10,8 +12,10 @@ function PageWrapper() {
         AboutPage: useRef(null),
         // add more references as per your sections
     };
+    const state = useGlobalState();
+    const dispatch = useGlobalDispatch();
+
     const [currentPage, setCurrentPage] = useState(1);
-    const [activeIndex, setActiveIndex] = useState(0);
     let disableBodyScroll = () => {
         document.body.style.overflow = 'hidden';
         document.body.style.height = '100%';
@@ -26,30 +30,32 @@ function PageWrapper() {
                 behavior: 'smooth'
             });
         }
-    }
+    };
+
     useEffect(() => {
-        scrollToSection(sectionsOrder[0]);
-    }, []);
+        scrollToSection(sectionsOrder[state.currentPage - 1]); // Adjust index
+    }, [state.currentPage, sectionsOrder]);
 
     const handleNext = () => {
-        if (currentPage < sectionsOrder.length) {
-            const nextSection = sectionsOrder[currentPage];  // Use currentPage to get the next section.
+        if (state.currentPage < sectionsOrder.length) {
+            const nextSection = sectionsOrder[state.currentPage];
             scrollToSection(nextSection);
-            setCurrentPage((prevPage) => prevPage + 1);
+            dispatch({ type: 'SET_CURRENT_PAGE', payload: state.currentPage + 1 });
         }
-    }
+    };
 
     const handlePrev = () => {
-        if (currentPage > 1) {  // As your currentPage starts from 1
-            const prevSection = sectionsOrder[currentPage - 2];  // Subtract 2 because array is 0-indexed
+        if (state.currentPage > 1) {
+            const prevSection = sectionsOrder[state.currentPage - 2];
             scrollToSection(prevSection);
-            setCurrentPage((prevPage) => prevPage - 1);
+            dispatch({ type: 'SET_CURRENT_PAGE', payload: state.currentPage - 1 });
         }
-    }
+    };
+
     useEffect(() => {
         function handleResize() {
             const currentSectionIndex = sectionsOrder.findIndex(s => !sectionRefs[s].current.getBoundingClientRect().top);
-            if(currentSectionIndex !== -1) {
+            if (currentSectionIndex !== -1) {
                 scrollToSection(sectionsOrder[currentSectionIndex]);
             }
         }
@@ -58,25 +64,26 @@ function PageWrapper() {
 
         // Clean up event listener on component unmount
         return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    }, [sectionsOrder]);
+
 
     return (
         <div>
-            {
-                currentPage > 1 && (
+                state.currentPage > 1 && (
                     <button className="pagewrapper-prevButton" onClick={handlePrev}>
                         <CustomArrowIconUP/>
                     </button>
                 )
             }
-            <div ref={sectionRefs.LandingPage}>
+            <div id="landingPage" ref={sectionRefs.LandingPage}>
                 <LandingPage ref={sectionRefs.LandingPage}/>
             </div>
-            <div ref={sectionRefs.AboutPage}>
+            <div id="about" ref={sectionRefs.AboutPage}>
                 <AboutPage ref={sectionRefs.AboutPage}/>
             </div>
             {
-                currentPage < sectionsOrder.length && (
+                state.currentPage < sectionsOrder.length && (
+
                     <button className="pagewrapper-nextButton" onClick={handleNext}>
                         <CustomArrowIconDown/>
                     </button>
