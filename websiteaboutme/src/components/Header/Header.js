@@ -62,7 +62,7 @@ const Header = () => {
                             )}
                         </li>
                         <li>
-                            <Link to="/" onClick={closeMobileMenu}>
+                            <Link id="about"onClick={closeMobileMenu}>
                                 <div>{t('menu.about')}</div>
                             </Link>
                         </li>

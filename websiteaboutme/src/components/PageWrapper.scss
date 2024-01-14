@@ -1,0 +1,35 @@
+.pagewrapper-nextButton {
+  position: fixed;
+  bottom: 15px;
+  right: 50%;
+  height: auto;
+  transform: translateX(50%);
+  z-index: 1000;
+  background: transparent;
+  border:none;
+}
+
+.pagewrapper-prevButton {
+  position: fixed;
+  top: 20px;
+  right: 50%;
+  transform: translateX(50%);
+  z-index: 1000;
+  background: transparent;
+  border:none;
+}
+
+
+.custom-arrow {
+  font-size: 24px; /* Adjust the size as needed */
+  padding: 8px;
+  cursor: pointer;
+}
+
+.larger-arrow {
+  font-size: 32px; /* Larger size for the first button */
+}
+
+.smaller-arrow {
+  font-size: 20px; /* Smaller size for the third button */
+}
