@@ -40,5 +40,10 @@
 
 
 * {
-  font-family: 'minimal', sans-serif;
+  font-family: 'minimal', sans-serif
+
+}
+body {
+
+  background-color: var(--background-color);
 }

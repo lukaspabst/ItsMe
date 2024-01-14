@@ -55,7 +55,7 @@ const AboutPage = () => {
                                     <span key={wordIndex} style={{
                                         display: 'inline-block',
                                         marginRight: '5px',
-                                        animation: inView ? `appear 2s ease ${wordIndex / 2}s forwards` : ``
+                                        animation: inView ? `appear 2s ease ${wordIndex / 2}s forwards` : `leave 0.25s ease`
                                     }}>{entry.icon}{entry.word}
                                     </span>
                                     {entry.subItems && entry.subItems.map((subItem, subIndex) => (
@@ -63,7 +63,7 @@ const AboutPage = () => {
                                             <span style={{
                                                 display: 'inline-block',
                                                 marginRight: '5px',
-                                                animation: inView ? `appear 2s ease ${subIndex / 2 + wordIndex / 2}s forwards` : ``
+                                                animation: inView ? `appear 2s ease ${subIndex / 2 + wordIndex / 2}s forwards` : `leave 0.25s ease`
                                             }}>
                                                 {subItem.word}{subItem.word && <br/>}
                                             </span>
@@ -75,7 +75,7 @@ const AboutPage = () => {
                                                     <span style={{
                                                         display: 'inline-block',
                                                         marginRight: '5px',
-                                                        animation: inView ? `appear 2s ease ${subSubIndex / 2 + subIndex / 2 + wordIndex / 2}s forwards` : ``
+                                                        animation: inView ? `appear 2s ease ${subSubIndex / 2 + subIndex / 2 + wordIndex / 2}s forwards` : `leave 0.25s ease`
                                                     }}>
                                                         {subSubItem.word}
                                                     </span>
