@@ -1,0 +1,126 @@
+:root {
+  --animation-direction: -1;
+  --animation-delay-multiplier: 1;
+}
+
+.chev-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  gap:10px;
+  position: relative;
+}
+.chev-icon-first{
+  display: flex;
+  flex-direction: row;
+  margin-top:-8px;
+  .chev-bar-left{
+    margin-right:-1.1px;
+  }
+  .chev-bar-right {
+    margin-left: -1.1px;
+  }
+}
+
+.chev-icon-second{
+  display: flex;
+  flex-direction: row;
+  margin-top:-8px;
+
+  .chev-bar-left{
+    width: 12px;
+    margin-right:-0.95px;
+  }
+  .chev-bar-right {
+    width: 12px;
+    margin-left: -0.95px;
+  }
+}
+
+.chev-icon-third{
+  display: flex;
+  flex-direction: row;
+  margin-top:-8px;
+
+  .chev-bar-left{
+    width: 8px;
+    margin-right:-0.8px;
+  }
+  .chev-bar-right {
+    width: 8px;
+    margin-left: -0.8px;
+  }
+}
+
+.chev-bar-left {
+  width: 16px;
+  height: 2px;
+  background: #fff;
+
+  border-radius:  5px 0 0 5px ;
+  transition: background 0.5s;
+  z-index: 5;
+}
+.chev-up-left{
+  transform: rotate(-25deg);
+}
+.chev-down-left{
+  transform: rotate(25deg);
+}
+
+.chev-bar-right {
+  width: 16px;
+  height: 2px;
+  background: #fff;
+  border-radius: 0 5px 5px 0;
+  transition: background 0.5s;
+  z-index: 5;
+}
+.chev-up-right{
+  transform: rotate(25deg);
+}
+.chev-down-right{
+  transform: rotate(-25deg);
+}
+
+.chev-icon:hover .chev-bar-left,
+.chev-icon:hover .chev-bar-right {
+  background: var(--secondary-color);
+}
+.chev-icon:hover .chev-icon-first {
+  animation: move 0.5s ease-in-out 0.0s forwards;
+}
+
+.chev-icon:hover .chev-icon-second {
+  animation: move 0.5s ease-in-out 0.25s forwards;
+}
+
+.chev-icon:hover .chev-icon-third {
+  animation: move 0.5s ease-in-out 0.5s forwards;
+}
+
+@keyframes move {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(var(--animation-direction) * 5px));
+  }
+}
+
+
+
+.chev-icon .chev-icon-first {
+  animation: move 2s ease-in-out calc(0.25s * var(--animation-delay-multiplier)) infinite;
+}
+
+.chev-icon .chev-icon-second {
+  animation: move 2s ease-in-out calc(0.5s * var(--animation-delay-multiplier)) infinite;
+}
+
+.chev-icon .chev-icon-third {
+  animation: move 2s ease-in-out calc(0.75s * var(--animation-delay-multiplier)) infinite;
+}
