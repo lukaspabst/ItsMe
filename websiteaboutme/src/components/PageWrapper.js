@@ -15,7 +15,6 @@ function PageWrapper() {
     const state = useGlobalState();
     const dispatch = useGlobalDispatch();
 
-    const [currentPage, setCurrentPage] = useState(1);
     let disableBodyScroll = () => {
         document.body.style.overflow = 'hidden';
         document.body.style.height = '100%';
@@ -54,9 +53,11 @@ function PageWrapper() {
 
     useEffect(() => {
         function handleResize() {
-            const currentSectionIndex = sectionsOrder.findIndex(s => !sectionRefs[s].current.getBoundingClientRect().top);
-            if (currentSectionIndex !== -1) {
-                scrollToSection(sectionsOrder[currentSectionIndex]);
+            const currentSectionRef = sectionRefs[sectionsOrder[state.currentPage - 1]];
+            if (currentSectionRef && currentSectionRef.current) {
+                currentSectionRef.current.scrollIntoView({
+                    behavior: 'smooth',
+                });
             }
         }
 
@@ -64,12 +65,12 @@ function PageWrapper() {
 
         // Clean up event listener on component unmount
         return () => window.removeEventListener('resize', handleResize);
-    }, [sectionsOrder]);
+    }, [sectionsOrder, state.currentPage]);
 
 
     return (
         <div>
-                state.currentPage > 1 && (
+            {state.currentPage > 1 && (
                     <button className="pagewrapper-prevButton" onClick={handlePrev}>
                         <CustomArrowIconUP/>
                     </button>
