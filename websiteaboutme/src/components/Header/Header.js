@@ -4,6 +4,7 @@ import './Header.scss';
 import styled, { keyframes } from 'styled-components';
 import CustomBarsIcon from "../../containerElements/CustomBarIcon/BarIcon";
 import {useTranslation} from "react-i18next";
+import {useGlobalDispatch, useGlobalState} from "../../GlobalContext";
 
 const slideIn = keyframes`
     from {
@@ -21,8 +22,10 @@ const AnimatedLi = styled.li`
 `;
 
 const Header = () => {
-
+    const state = useGlobalState();  // Add this line to get the global state
+    const dispatch = useGlobalDispatch();
     const [isActive, setIsActive] = useState(false);
+    const [prevPage, setPrevPage] = useState(1);
     const toggleMobileMenu = () => {
         setIsActive(!isActive);
     };
@@ -41,12 +44,37 @@ const Header = () => {
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);
     };
+    const scrollTo = (elementId) => {
+        document.getElementById(elementId).scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const handleAboutClick = () => {
+        setPrevPage(state.currentPage);
+        closeMobileMenu();
+        dispatch({ type: 'SET_CURRENT_PAGE', payload: 2 });
+    };
+    const handleLandingClick = () => {
+        setPrevPage(state.currentPage);
+        closeMobileMenu();
+        dispatch({ type: 'SET_CURRENT_PAGE', payload: 1 });
+    };
+
+
     return (
         <header>
             <nav className="header-navbar">
                 <div className="logo-wrapper-header">
                     <img src="/assets/logo/logo_withoutBG_white.png" alt="logo" className="logo-header"/>
-                    <h1>Lukas Pabst </h1>
+                    <Link onClick={() => {
+                        handleLandingClick();
+                        scrollTo('landingPage');
+                    }}>
+                        <div
+                            className={`current-page ${state.currentPage === 1 ? 'active activeLink' : ''} ${prevPage === 1 && state.currentPage !== 1 ? 'prev' : ''}`}
+                        >
+                            <h1>Lukas Pabst </h1>
+                        </div>
+                    </Link>
                 </div>
                 <div className="menu-desktop-header">
                     <ul>
@@ -62,8 +90,15 @@ const Header = () => {
                             )}
                         </li>
                         <li>
-                            <Link id="about"onClick={closeMobileMenu}>
-                                <div>{t('menu.about')}</div>
+                            <Link onClick={() => {
+                                handleAboutClick();
+                                scrollTo('about');
+                            }}>
+                                <div
+                                    className={`current-page ${state.currentPage === 2 ? 'active activeLink' : ''} ${prevPage === 2 && state.currentPage !== 2 ? 'prev' : ''}`}
+                                >
+                                    {t('menu.about')}
+                                </div>
                             </Link>
                         </li>
                         <li>
@@ -106,21 +141,32 @@ const Header = () => {
                     <div className="mobile-menu">
                         <ul>
                             <AnimatedLi delay="0s">
-                                <Link to="/" onClick={closeMobileMenu}>
-                                    <div className="mobile-menu-element">{t('menu.about')}</div>
+                                <Link onClick={() => {
+                                    handleLandingClick();
+                                    scrollTo('landingPage');
+                                }}>
+                                    <div className="mobile-menu-element">{t('menu.landingPage')}</div>
                                 </Link>
                             </AnimatedLi>
                             <AnimatedLi delay="0.25s">
+                                <Link onClick={() => {
+                                    handleAboutClick();
+                                    scrollTo('about');
+                                }}>
+                                    <div className="mobile-menu-element">{t('menu.about')}</div>
+                                </Link>
+                            </AnimatedLi>
+                            <AnimatedLi delay="0.5s">
                                 <Link to="/projects" onClick={closeMobileMenu}>
                                     <div className="mobile-menu-element">{t('menu.projects')}</div>
                                 </Link>
                             </AnimatedLi>
-                            <AnimatedLi delay="0.5s">
+                            <AnimatedLi delay="0.75s">
                                 <Link to="/contact" onClick={closeMobileMenu}>
                                     <div className="mobile-menu-element">{t('menu.contact')}</div>
                                 </Link>
                             </AnimatedLi>
-                            <AnimatedLi delay="0.75s">
+                            <AnimatedLi delay="1s">
                                 <Link to="/skills" onClick={closeMobileMenu}>
                                     <div className="mobile-menu-element">{t('menu.skills')}</div>
                                 </Link>
