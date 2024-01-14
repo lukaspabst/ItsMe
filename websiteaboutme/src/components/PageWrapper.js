@@ -5,13 +5,13 @@ import './PageWrapper.scss'
 import {CustomArrowIconDown, CustomArrowIconUP} from "../containerElements/CustomArrows/CustomArrows";
 import {useGlobalDispatch, useGlobalState} from "../GlobalContext";
 
+
 function PageWrapper() {
     const sectionRefs = {
         LandingPage: useRef(null),
         AboutPage: useRef(null),
         // add more references as per your sections
     };
-
     const state = useGlobalState();
     const dispatch = useGlobalDispatch();
 
@@ -66,9 +66,9 @@ function PageWrapper() {
         return () => window.removeEventListener('resize', handleResize);
     }, [sectionsOrder]);
 
+
     return (
         <div>
-            {
                 state.currentPage > 1 && (
                     <button className="pagewrapper-prevButton" onClick={handlePrev}>
                         <CustomArrowIconUP/>
@@ -83,6 +83,7 @@ function PageWrapper() {
             </div>
             {
                 state.currentPage < sectionsOrder.length && (
+
                     <button className="pagewrapper-nextButton" onClick={handleNext}>
                         <CustomArrowIconDown/>
                     </button>
