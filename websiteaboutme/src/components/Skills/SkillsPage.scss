@@ -11,12 +11,15 @@
   align-items: center;
 }
 .skills-header{
-  font-size: 25px;
-  font-weight: bold;
-  letter-spacing: 2px;
   width:  auto;
   height: 10%;
   padding: 10px 25px 0 25px;
+  h1{
+    font-size: 2em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
 }
 .grid-container{
   width: 90%;
@@ -139,7 +142,6 @@
   background: #fff;
   border-radius: 25px;
   border: 2px solid white;
-
   box-shadow: 0 0 16px var(--primary-color);
 }
 
@@ -157,6 +159,7 @@
   position: absolute;
   height: 100%;
   border-radius: 15px;
+  animation-delay: 2s;
   animation: progress-forward var(--time) linear forwards;
   background-size: 40px 40px;
 }

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 const Skill = ({ name, icon, percentage, index, inView }) => {
     const [animationClass, setAnimationClass] = useState('');
-
+    const progressBarAnimation =
+        inView &&   `progress-forward var(--time) linear forwards ${index * 0.5}s`;
     useEffect(() => {
         if (inView) {
             setAnimationClass(index % 2 === 0 ? 'fly-in-left' : 'fly-in-right');
@@ -22,8 +23,10 @@ const Skill = ({ name, icon, percentage, index, inView }) => {
                     <div className="skill-progress-bar">
                         <div
                             className="skill-progress-bar-fill"
-                            style={{ '--width': `${percentage}%`,
+                            style={{
+                                '--width': `${percentage}%`,
                                 '--time': `${percentage * 3 / 100}s`,
+                                animation: progressBarAnimation || 'none',
                                 background: percentage > 75
                                     ? 'linear-gradient(\n' +
                                     '                  90deg,\n' +
