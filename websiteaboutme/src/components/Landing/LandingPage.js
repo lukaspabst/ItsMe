@@ -18,7 +18,7 @@ const LandingPage = () => {
         spans.forEach((span, index) => {
             span.style.animation = inView
                 ? `flyIn 1s ease forwards ${index * 0.025}s`
-                : `flyOut 0.5s ease forwards ${index * 0.025}s`; // Different animation for out of view
+                : `flyOut 0.5s ease forwards ${index * 0.025}s`;
         });
     }, [inView]);
 

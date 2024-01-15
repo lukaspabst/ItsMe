@@ -13,11 +13,6 @@ const AboutPage = () => {
     });
     const { t } = useTranslation();
 
-    useEffect(() => {
-        console.log("About ViewState "+inView);
-    }, [inView]);
-
-
     const content = [
         { word: t('aboutMe.greeting'), icon: '👋', newLine: true },
         { word: '', icon: '', newLine: true },

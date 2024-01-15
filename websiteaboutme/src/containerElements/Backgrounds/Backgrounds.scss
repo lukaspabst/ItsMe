@@ -212,7 +212,44 @@ section .air.air4{
   height: 100%;
   background: radial-gradient(ellipse at bottom, var(--background-color) 0%, #030617 100%);
 }
+.background-preset {
+  animation:slide 12s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, var(--tertiary-color) 50%, var(--background-color) 50%);
+  mask-image: radial-gradient(
+                  white 0%,
+                  white 30%,
+                  transparent 80%,
+                  transparent
+  );
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:0;
+}
 
+.background-preset-reverse {
+  animation-direction:alternate-reverse;
+  animation-duration:15s;
+}
+
+.background-preset-slowest {
+  animation-duration:18s;
+}
+
+
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+}
+
+//DOWNLOAD ANIMATION
 @function shadowValue($radius, $cosV, $sinV, $bokeh, $lineColor) {
   $value: '#{$radius * $cosV}px #{$radius * $sinV}px #{$bokeh}px #{$lineColor}';
   $value: '#{$value} ,#{$radius - 1 * $cosV}px #{$radius - 1 * $sinV}px #{$bokeh}px #{$lineColor}';

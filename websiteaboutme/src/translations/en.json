@@ -10,6 +10,11 @@
     "welcome": "Welcome,",
     "aboutMeText": "I am Lukas, 22, and coding is my passion."
   },
+  "skillsPage": {
+    "headline": "My Skills",
+    "downloadCV": "Download Full CV",
+    "thankYou": "Thank you! "
+  },
   "aboutMe": {
     "headline": "About Me",
     "greeting": "Hi, I'm Lukas Pabst, a Software Developer based in Mühlhausen/Thüringen.",

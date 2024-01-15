@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useContext } from 'react';
+import React, {createContext, useReducer, useContext, useEffect} from 'react';
 
 const GlobalStateContext = createContext();
 const GlobalDispatchContext = createContext();
@@ -15,6 +15,7 @@ const globalReducer = (state, action) => {
 };
 
 export const GlobalProvider = ({ children }) => {
+
     const [state, dispatch] = useReducer(globalReducer, {
         currentPage: 1,
         activeIndex: 0,

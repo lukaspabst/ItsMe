@@ -5,11 +5,10 @@ const BackgroundSkills = ({ triggerFireworks }) => {
     return (
         <div className="container">
             <div className="skills-background-container">
-
-
-
-
-
+                <div className="background-preset"></div>
+                <div className="background-preset background-preset-reverse"></div>
+                <div className="background-preset background-preset-slowest"></div>
+                <div className="content"></div>
                 {triggerFireworks && (
                     <div className="fireworks-container">
                         {[...Array(20)].map((_, i) => (
