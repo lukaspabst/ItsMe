@@ -10,6 +10,11 @@
     "welcome": "Willkommen,",
     "aboutMeText": "Ich bin Lukas, 22, und das Programmieren ist meine Leidenschaft."
   },
+  "skillsPage": {
+    "headline": "Meine Fähigkeiten",
+    "downloadCV": "Lebenslauf herunterladen",
+    "thankYou": "Vielen Dank! "
+  },
   "aboutMe": {
     "yourInterestsOrProfession": "deine Interessen oder Beruf",
     "greeting": "Hi, ich bin Lukas Pabst, ein Softwareentwickler aus Mühlhausen/Thüringen.",

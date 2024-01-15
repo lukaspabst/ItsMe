@@ -9,6 +9,19 @@
   border:none;
 }
 
+.about-next-button{
+  background: rgba(0,0,0,0.5);
+  width: 30px;
+  height: 30px;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  border-radius: 50%;
+  transition: transform 0.5s ease, background 1s ease;
+
+  &:hover {
+    transform: translateX(50%) translateY(5px);
+  }
+}
 .pagewrapper-prevButton {
   position: fixed;
   top: 20px;
@@ -21,15 +34,15 @@
 
 
 .custom-arrow {
-  font-size: 24px; /* Adjust the size as needed */
+  font-size: 24px;
   padding: 8px;
   cursor: pointer;
 }
 
 .larger-arrow {
-  font-size: 32px; /* Larger size for the first button */
+  font-size: 32px;
 }
 
 .smaller-arrow {
-  font-size: 20px; /* Smaller size for the third button */
+  font-size: 20px;
 }

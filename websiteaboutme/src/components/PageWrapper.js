@@ -1,17 +1,19 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import LandingPage from './Landing/LandingPage';
 import AboutPage from './About/About';
 import './PageWrapper.scss'
 import {CustomArrowIconDown, CustomArrowIconUP} from "../containerElements/CustomArrows/CustomArrows";
 import {useGlobalDispatch, useGlobalState} from "../GlobalContext";
+import SkillsPage from "./Skills/SkillsPage";
 
 
 function PageWrapper() {
     const sectionRefs = {
         LandingPage: useRef(null),
         AboutPage: useRef(null),
-        // add more references as per your sections
+        SkillsPage: useRef(null),
     };
+
     const state = useGlobalState();
     const dispatch = useGlobalDispatch();
 
@@ -20,7 +22,7 @@ function PageWrapper() {
         document.body.style.height = '100%';
     }
     disableBodyScroll();
-    const sectionsOrder = ['LandingPage', 'AboutPage']; // maintain order of your sections
+    const sectionsOrder = ['LandingPage', 'AboutPage','SkillsPage'];
 
     const scrollToSection = (sectionKey) => {
         const section = sectionRefs[sectionKey];
@@ -30,10 +32,6 @@ function PageWrapper() {
             });
         }
     };
-
-    useEffect(() => {
-        scrollToSection(sectionsOrder[state.currentPage - 1]); // Adjust index
-    }, [state.currentPage, sectionsOrder]);
 
     const handleNext = () => {
         if (state.currentPage < sectionsOrder.length) {
@@ -60,17 +58,28 @@ function PageWrapper() {
                 });
             }
         }
+        window.addEventListener('load', () => {
+            scrollToSection(sectionsOrder[0]);
+            dispatch({ type: 'SET_CURRENT_PAGE', payload: 1 });
+        });
 
         window.addEventListener('resize', handleResize);
 
         // Clean up event listener on component unmount
-        return () => window.removeEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('load', () => {
+                scrollToSection(sectionsOrder[0]);
+                dispatch({ type: 'SET_CURRENT_PAGE', payload: 1 });
+            });
+        };
     }, [sectionsOrder, state.currentPage]);
 
 
     return (
         <div>
-            {state.currentPage > 1 && (
+            {
+                state.currentPage > 1 && (
                     <button className="pagewrapper-prevButton" onClick={handlePrev}>
                         <CustomArrowIconUP/>
                     </button>
@@ -82,10 +91,15 @@ function PageWrapper() {
             <div id="about" ref={sectionRefs.AboutPage}>
                 <AboutPage ref={sectionRefs.AboutPage}/>
             </div>
+            <div id="skills" ref={sectionRefs.SkillsPage}>
+                <SkillsPage ref={sectionRefs.SkillsPage}/>
+            </div>
             {
                 state.currentPage < sectionsOrder.length && (
-
-                    <button className="pagewrapper-nextButton" onClick={handleNext}>
+                    <button
+                        className={`pagewrapper-nextButton ${state.currentPage === 2 ? "about-next-button" : ""}`}
+                        onClick={handleNext}
+                    >
                         <CustomArrowIconDown/>
                     </button>
                 )
