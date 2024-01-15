@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import AbstractBackground from '../../containerElements/Backgrounds/AbstractBackground';
 import './LandingPage.scss';
 import {useInView} from "react-intersection-observer";

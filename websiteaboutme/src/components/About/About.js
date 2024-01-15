@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './About.scss';
 import BackgroundAbout from "../../containerElements/Backgrounds/BackgroundAbout";
 import { useInView } from "react-intersection-observer";

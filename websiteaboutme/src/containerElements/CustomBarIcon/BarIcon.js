@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './BarIcon.scss';
 
 const CustomBarsIcon = ({ onIconClick, isActive, setIsActive }) => {

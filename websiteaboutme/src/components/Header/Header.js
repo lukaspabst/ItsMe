@@ -62,6 +62,18 @@ const Header = () => {
         closeMobileMenu();
         dispatch({ type: 'SET_CURRENT_PAGE', payload: 3 });
     };
+    const handleProjectsClick = () => {
+        setPrevPage(state.currentPage);
+        closeMobileMenu();
+        dispatch({ type: 'SET_CURRENT_PAGE', payload: 4 });
+    };
+
+    const handleContactClick = () => {
+        setPrevPage(state.currentPage);
+        closeMobileMenu();
+        dispatch({ type: 'SET_CURRENT_PAGE', payload: 5 });
+    };
+
 
     return (
         <header>
@@ -117,13 +129,25 @@ const Header = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/projects" onClick={closeMobileMenu}>
-                                <div>{t('menu.projects')}</div>
+                            <Link onClick={() => {
+                                handleProjectsClick();
+                                scrollTo('projects');
+                            }}>
+                                <div
+                                    className={`current-page ${state.currentPage === 4 ? 'active' : ''} ${prevPage === 4 && state.currentPage !== 4 ? 'prev' : ''}`}
+                                >
+                                    {t('menu.projects')}</div>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/contact" onClick={closeMobileMenu}>
-                                <div>{t('menu.contact')}</div>
+                            <Link onClick={() => {
+                                handleContactClick();
+                                scrollTo('contact');
+                            }}>
+                                <div
+                                    className={`current-page ${state.currentPage === 5 ? 'active' : ''} ${prevPage === 5 && state.currentPage !== 5 ? 'prev' : ''}`}
+                                >
+                                    {t('menu.contact')}</div>
                             </Link>
                         </li>
                     </ul>
@@ -176,12 +200,18 @@ const Header = () => {
                             </AnimatedLi>
 
                             <AnimatedLi delay="0.75s">
-                                <Link to="/" onClick={closeMobileMenu}>
+                                <Link onClick={() => {
+                                    handleProjectsClick();
+                                    scrollTo('projects');
+                                }}>
                                     <div className="mobile-menu-element">{t('menu.contact')}</div>
                                 </Link>
                             </AnimatedLi>
                             <AnimatedLi delay="1s">
-                                <Link to="/" onClick={closeMobileMenu}>
+                                <Link onClick={() => {
+                                    handleContactClick();
+                                    scrollTo('contact');
+                                }}>
                                     <div className="mobile-menu-element">{t('menu.projects')}</div>
                                 </Link>
                             </AnimatedLi>

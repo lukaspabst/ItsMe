@@ -1,6 +1,5 @@
 import React from 'react';
 import './Backgrounds.scss';
-import {useInView} from "react-intersection-observer";
 
 const AbstractBackground = ({inView}) => {
 

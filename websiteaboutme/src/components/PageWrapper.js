@@ -5,6 +5,8 @@ import './PageWrapper.scss'
 import {CustomArrowIconDown, CustomArrowIconUP} from "../containerElements/CustomArrows/CustomArrows";
 import {useGlobalDispatch, useGlobalState} from "../GlobalContext";
 import SkillsPage from "./Skills/SkillsPage";
+import ProjectsPage from "./Projects/Projects";
+import ContactPage from "./Contact/Contact";
 
 
 function PageWrapper() {
@@ -12,6 +14,8 @@ function PageWrapper() {
         LandingPage: useRef(null),
         AboutPage: useRef(null),
         SkillsPage: useRef(null),
+        ProjectsPage: useRef(null),
+        ContactPage: useRef(null),
     };
 
     const state = useGlobalState();
@@ -22,7 +26,7 @@ function PageWrapper() {
         document.body.style.height = '100%';
     }
     disableBodyScroll();
-    const sectionsOrder = ['LandingPage', 'AboutPage','SkillsPage'];
+    const sectionsOrder = ['LandingPage', 'AboutPage','SkillsPage','ProjectsPage','ContactPage'];
 
     const scrollToSection = (sectionKey) => {
         const section = sectionRefs[sectionKey];
@@ -93,6 +97,12 @@ function PageWrapper() {
             </div>
             <div id="skills" ref={sectionRefs.SkillsPage}>
                 <SkillsPage ref={sectionRefs.SkillsPage}/>
+            </div>
+            <div id="projects" ref={sectionRefs.ProjectsPage}>
+                <ProjectsPage ref={sectionRefs.ProjectsPage}/>
+            </div>
+            <div id="contact" ref={sectionRefs.ContactPage}>
+                <ContactPage ref={sectionRefs.ContactPage}/>
             </div>
             {
                 state.currentPage < sectionsOrder.length && (
