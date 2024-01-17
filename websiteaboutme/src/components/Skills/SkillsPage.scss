@@ -1,11 +1,11 @@
 .skills-container {
   position: absolute;
-  top: calc(80px + 200%);
+  top: calc(80px + 200vh);
   display: flex;
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  height: calc(100% - 35px);
+  height: calc(100vh - 35px);
   z-index: 99;
   justify-content: center;
   align-items: center;

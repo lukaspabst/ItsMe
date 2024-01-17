@@ -90,17 +90,6 @@
 .chev-icon:hover .chev-bar-right {
   background: var(--secondary-color);
 }
-.chev-icon:hover .chev-icon-first {
-  animation: move 0.5s ease-in-out 0.0s forwards;
-}
-
-.chev-icon:hover .chev-icon-second {
-  animation: move 0.5s ease-in-out 0.25s forwards;
-}
-
-.chev-icon:hover .chev-icon-third {
-  animation: move 0.5s ease-in-out 0.5s forwards;
-}
 
 @keyframes move {
   0% {

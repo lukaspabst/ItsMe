@@ -19,7 +19,7 @@ const SkillPage = () => {
         {name: 'Java', icon: <img src="/Icons/Java.svg" alt="Java"/>,  percentage: 85 },
         { name: 'React', icon: <img src="/Icons/React.svg" alt="React"/>, percentage: 85},
         {name: 'Maven', icon: <img src="/Icons/Apache%20Maven.svg" alt="Maven"/>, percentage: 85},
-        {name: 'Spring', icon: <img src="/Icons/Spring.svg" alt="Spring" />, percentage: 80},
+        {name: 'Spring', icon: <img src="/Icons/Spring.svg" alt="Spring" />, percentage: 85},
         {name: 'JavaScript', icon: <img src="/Icons/JavaScript.svg" alt="JavaScript"/>, percentage: 80},
         {name: 'Node.js', icon: <img src="/Icons/Node.js.svg" alt="NodeJS"/>, percentage: 75},
         {name: 'CSS', icon: <img src="/Icons/CSS3.svg" alt="CSS3"/>, percentage: 75},
@@ -74,7 +74,7 @@ const SkillPage = () => {
                 </div>
                 <div className="download-cv-container">
                     <div className={`button-wrapper ${inView ? 'scale-up' : 'scale-down'}`}>
-                        <a href="/CV/CV_Lukas_Pabst.pdf" download
+                        <a href="/CV/Dummy.pdf" download
                            className={`button-cv-download ${isClicked ? 'deactivated' : ''}`} onClick={handleClick}>
                             {!isClicked ? (
                                 <>

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import LandingPage from './Landing/LandingPage';
 import AboutPage from './About/About';
 import './PageWrapper.scss'
@@ -7,6 +7,7 @@ import {useGlobalDispatch, useGlobalState} from "../GlobalContext";
 import SkillsPage from "./Skills/SkillsPage";
 import ProjectsPage from "./Projects/Projects";
 import ContactPage from "./Contact/Contact";
+import WelcomeAnimation from "../PageAnimations/WelcomeAnimation";
 
 
 function PageWrapper() {
@@ -80,7 +81,11 @@ function PageWrapper() {
     }, [sectionsOrder, state.currentPage]);
 
 
+
+
     return (
+
+
         <div>
             {
                 state.currentPage > 1 && (
@@ -114,6 +119,7 @@ function PageWrapper() {
                     </button>
                 )
             }
+
         </div>
     );
 }

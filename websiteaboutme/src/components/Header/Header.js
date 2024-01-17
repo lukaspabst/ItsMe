@@ -204,7 +204,7 @@ const Header = () => {
                                     handleProjectsClick();
                                     scrollTo('projects');
                                 }}>
-                                    <div className="mobile-menu-element">{t('menu.contact')}</div>
+                                    <div className="mobile-menu-element">{t('menu.projects')}</div>
                                 </Link>
                             </AnimatedLi>
                             <AnimatedLi delay="1s">
@@ -212,7 +212,7 @@ const Header = () => {
                                     handleContactClick();
                                     scrollTo('contact');
                                 }}>
-                                    <div className="mobile-menu-element">{t('menu.projects')}</div>
+                                    <div className="mobile-menu-element">{t('menu.contact')}</div>
                                 </Link>
                             </AnimatedLi>
                         </ul>

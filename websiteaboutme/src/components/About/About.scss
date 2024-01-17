@@ -8,7 +8,7 @@
   flex-direction: column;
   text-align: left;
   height: calc(100vh - 80px - 35px);
-  overflow: auto;
+
 }
 
 .about-header {
@@ -35,7 +35,8 @@
   font-size: 1.5em;
   letter-spacing: 0.1em;
   max-height: 50vh;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   span {
     opacity: 0;
     position: relative;
@@ -46,13 +47,15 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 60%;
 }
 .about-me-image-wrapper{
   justify-content: center;
   display: flex;
   align-items: center;
   width: 50%;
-  height: auto;
+  height: 100%;
+  transform:scale(1);
 }
 .image-overlay-toRevealHover{
   font-size: 18px;
@@ -80,6 +83,7 @@
   justify-content: space-between;
   opacity: 0;
   transition: opacity 0.5s ease-in;
+
 }
 .about-me-content.fade-in{
   opacity: 1;
@@ -90,7 +94,7 @@
 }
 .about-me-image{
   transition: transform 1s ease-in-out;
-  height: 65vh;
+  height: 100%;
   width: auto;
   mask-image: radial-gradient(
                   white 0%,
@@ -170,7 +174,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   &.scale-up {
     animation: scale-up 2s forwards ease-in-out;
   }
@@ -304,9 +307,46 @@
       }
     }
   }
+  li:hover:nth-child(4) {
+    & a {
+      background: var(--quaternary-color);
+
+      &::before {
+        background: var(--quaternary-color);
+        opacity: 0.7;
+      }
+      &::after {
+        background: var(--quaternary-color);
+        opacity: 0.6;
+      }
+    }
+  }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 374px) {
+  .about-me-image-wrapper,
+  .about-me-image {
+    display: none;
+  }
+
+  .about-header{
+    width:calc(100% - 35px);
+  }
+  .about-me-content {
+    width:calc(100% - 25px);
+    display: flex;
+    flex-direction: column;
+    gap: 10vh;
+  }
+
+  .social-media-wrapper {
+    ul{
+      transform: scale(0.3);
+      transition: transform 1s ease-in-out;
+    }
+  }
+}
+@media only screen and (min-width: 375px) and (max-width: 767px) {
   .about-me-image-wrapper,
   .about-me-image {
     display: none;
@@ -330,7 +370,7 @@
   }
 }
 
-@media only screen and (min-width: 1296px) and (max-width: 1439px) {
+@media only screen and (min-width: 1296px) and (max-width: 19px) {
   .social-media-wrapper {
     ul{
       transform: scale(0.9);

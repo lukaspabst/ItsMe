@@ -1,0 +1,56 @@
+.animation-container {
+  position: absolute;
+  bottom:0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 9999;
+  width: 100%;
+  background: radial-gradient(ellipse at bottom, var(--background-color) 0%, #030617 100%);
+  animation: reduceHeight 1.5s cubic-bezier(0.87, 0, 0.13, 1) 2s forwards;
+}
+
+.text-container {
+  display: inline-block;
+  font-size: 40px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.animated-char {
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: fadeInOut ease-in-out 1.5s forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  51% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+}
+
+
+@keyframes reduceHeight {
+  0% {
+    height: 100vh;
+  }
+  100% {
+    height: 0;
+  }
+}

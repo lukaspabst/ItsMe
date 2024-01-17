@@ -1,8 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import AbstractBackground from '../../containerElements/Backgrounds/AbstractBackground';
 import './LandingPage.scss';
 import {useInView} from "react-intersection-observer";
 import {useTranslation} from "react-i18next";
+import WelcomeAnimation from "../../PageAnimations/WelcomeAnimation";
 
 const LandingPage = () => {
     const { ref, inView } = useInView({
@@ -74,10 +75,35 @@ const LandingPage = () => {
             }
         }
     };
+    const [hasVisitedBefore, setHasVisitedBefore] = useState(false);
+
+    useEffect(() => {
+        // Check if the user has visited before
+        const storedValue = sessionStorage.getItem('hasVisitedBefore');
+        setHasVisitedBefore(!!storedValue);
+
+        if (hasVisitedBefore === null || hasVisitedBefore === false) {
+            // If not visited before, set to true after a delay
+            const timeout = setTimeout(() => {
+                setHasVisitedBefore(true);
+                sessionStorage.setItem('hasVisitedBefore', 'true');
+            }, 5000); // Adjust the delay as needed (5000 milliseconds = 5 seconds)
+
+            // Clear the timeout to avoid issues with component unmounting
+            return () => clearTimeout(timeout);
+        }
+    }, [hasVisitedBefore]);
 
     return (
+
+
+
+
         <div ref={ref}>
             <AbstractBackground inView={inView}/>
+            {(hasVisitedBefore === null || hasVisitedBefore === false) && (
+                <WelcomeAnimation/>
+            )}
             <div className="landingPage-wrapper">
                     <div className="aboutMe-wrapper">
                         <h1>
@@ -110,6 +136,8 @@ const LandingPage = () => {
                     </div>
             </div>
         </div>
+
+
     );
 };
 

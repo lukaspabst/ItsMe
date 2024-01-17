@@ -10,10 +10,6 @@ const AbstractBackground = ({inView}) => {
                 alt="Background"
                 className="background"
             />
-            <p className={`message ${inView ? 'fade-in' : 'fade-out'}`}>
-                all your dreams can come true<br/>
-                if you have the courage to pursue them
-            </p>
 
             {[...Array(100)].map((_, i) => (
                 <div className="circle-container" key={i}>

@@ -4,6 +4,7 @@ import BackgroundAbout from "../../containerElements/Backgrounds/BackgroundAbout
 import { useInView } from "react-intersection-observer";
 import {FaGithub, FaInstagram, FaTwitter} from "react-icons/fa";
 import {useTranslation} from "react-i18next";
+import {FaXing} from "react-icons/fa6";
 
 const AboutPage = () => {
     const [isHovered, setIsHovered] = useState(false);
@@ -85,16 +86,16 @@ const AboutPage = () => {
                         </p>
                     </div>
                         <div className="about-me-image-wrapper">
-                            <img src="/assets/pictures/img.png" alt="Me"
+                            <img src="/assets/pictures/Dummy.jpg" alt="Me"
                                  className={`about-me-image pixelated ${inView ? 'scale-up' : 'scale-down'}`}
                                  onMouseOver={() => setIsHovered(true)}
                                  onMouseOut={() => setIsHovered(false)}/>
                             <div
                                 style={{
                                     position: 'absolute',
-                                    top: '40%',
-                                    left: '75%',
-                                    transform: 'translate(-50%, -40%)'
+                                    top: '50%',
+                                    left: '50%',
+                                    transform: 'translate(-50%, -50%)'
                                 }}>
                                 <div
                                     className={`image-overlay-toRevealHover ${inView ? 'is-visible' : 'is-hidden'} ${isHovered ? 'is-hidden' : ''}`}>Hover
@@ -113,6 +114,16 @@ const AboutPage = () => {
                                 </i>
                                 <span>
                                     - Github
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.xing.com/profile/Lukas_Pabst102" target="_blank" rel="noreferrer">
+                                <i className="fa-brands">
+                                    <FaXing/>
+                                </i>
+                                <span>
+                                    - Xing
                                 </span>
                             </a>
                         </li>
