@@ -3,6 +3,7 @@ import AbstractBackground from '../../containerElements/Backgrounds/AbstractBack
 import './LandingPage.scss';
 import {useInView} from "react-intersection-observer";
 import {useTranslation} from "react-i18next";
+import WelcomeAnimation from "../../PageAnimations/WelcomeAnimation";
 
 const LandingPage = () => {
     const { ref, inView } = useInView({
@@ -26,9 +27,9 @@ const LandingPage = () => {
         this.toRotate = toRotate;
         this.el = el;
         this.loopNum = 0;
-        this.period = parseInt(period, 10) || 3000;
+        this.period = parseInt(period, 10) || 1500;
         this.txt = '';
-        this.delayBeforeStart = parseInt(delayBeforeStart, 10) || 2000;
+        this.delayBeforeStart = parseInt(delayBeforeStart, 10) || 500;
         this.tick();
         this.isDeleting = false;
     };
@@ -74,10 +75,27 @@ const LandingPage = () => {
             }
         }
     };
+    const [hasVisitedBefore, setHasVisitedBefore] = useState(false);
+
+    useEffect(() => {
+        const storedValue = sessionStorage.getItem('hasVisitedBefore');
+        setHasVisitedBefore(!!storedValue);
+
+        if (hasVisitedBefore === null || hasVisitedBefore === false) {
+            const timeout = setTimeout(() => {
+                setHasVisitedBefore(true);
+                sessionStorage.setItem('hasVisitedBefore', 'true');
+            }, 5000);
+            return () => clearTimeout(timeout);
+        }
+    }, [hasVisitedBefore]);
 
     return (
         <div ref={ref}>
             <AbstractBackground inView={inView}/>
+            {(hasVisitedBefore === null || hasVisitedBefore === false) && (
+                <WelcomeAnimation/>
+            )}
             <div className="landingPage-wrapper">
                     <div className="aboutMe-wrapper">
                         <h1>
@@ -103,7 +121,7 @@ const LandingPage = () => {
                     </div>
                     <div className={`typing-wrapper ${inView ? 'fade-in' : 'fade-out'}`}>
 
-                        <p className="typewriter" data-period="5000" data-delay-before-start="1000"
+                        <p className="typewriter" data-period="2000" data-delay-before-start="500"
                            data-type='["Full-Stack Developer", "Java and JavaScript", "Spring and React", "Anime Fan", "Gym Addicted"]'>
                             <span className="wrap"></span>
                         </p>

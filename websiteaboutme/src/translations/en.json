@@ -1,4 +1,5 @@
 {
+  "welcome": "Welcome",
   "menu": {
     "landingPage": "Landing",
     "about": "About Me",
@@ -7,13 +8,22 @@
     "contact": "Contact"
   },
   "landingPage": {
-    "welcome": "Welcome,",
+    "welcome": "Hello,",
     "aboutMeText": "I am Lukas, 22, and coding is my passion."
   },
   "skillsPage": {
     "headline": "My Skills",
     "downloadCV": "Download Full CV",
     "thankYou": "Thank you! "
+  },
+  "contactPage": {
+    "headline": "Contact Me",
+    "reachOut": "Feel free to reach out with any questions, inquiries, or collaboration opportunities. Your feedback is valuable!",
+    "responding": "Thank you for your message. You will receive a confirmation of receipt; otherwise, please try again. Please note that the confirmation might end up in the spam folder.",
+    "submit": "Submit"
+  },
+  "projectsPage": {
+    "headline": "My Projects (Currently working on, so only Dummies)"
   },
   "aboutMe": {
     "headline": "About Me",
@@ -25,7 +35,8 @@
     "education": "Bachelor degree in Business Informatics",
     "languages": "Fluent in German (native) and proficient in English (written and spoken).",
     "hobbies": "Hobbies include weightlifting, programming and reading.",
-    "contact": "Reach out to me at lukas.pabst@outlook.de or use the build in Contact",
+    "contact": "Reach out to me at lukas.pabst.business@outlook.de or use the build in Contact",
     "lookingForward": "Looking forward to connecting and discussing exciting opportunities!"
-  }
+  },
+  "copyright": "2024 All rights reserved."
 }

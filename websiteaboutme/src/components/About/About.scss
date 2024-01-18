@@ -2,13 +2,11 @@
   position: absolute;
   top:calc(100vh + 80px);
   width: 100%;
-
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   text-align: left;
   height: calc(100vh - 80px - 35px);
-  overflow: auto;
 }
 
 .about-header {
@@ -35,7 +33,7 @@
   font-size: 1.5em;
   letter-spacing: 0.1em;
   max-height: 50vh;
-  overflow: auto;
+  overflow-x: hidden;
   span {
     opacity: 0;
     position: relative;
@@ -46,31 +44,43 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 60%;
 }
 .about-me-image-wrapper{
   justify-content: center;
   display: flex;
   align-items: center;
   width: 50%;
-  height: auto;
-}
-.image-overlay-toRevealHover{
-  font-size: 18px;
-  color: #fff;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-  animation: bounce 2s infinite;
-}
-.is-visible {
-  opacity: 1;
-  transition: opacity 1s ease-in-out;
-  transition-delay:2s;
+  height: 100%;
+  transform:scale(1);
+  &::before {
+    content: "Hover to Reveal";
+    position: absolute;
+    top: 50%;
+    font-size: 1.2em;
+    color: #fff;
+    opacity: 0; visibility: visible;
+    transition: opacity 0.5s ease-in-out ;
+    animation: bounce 2s infinite;
+    z-index: 22;
+  }
+
+  &.fade-in::before {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out 1.5s forwards, bounce 2s infinite;;
+  }
+
+  &.fade-out::before {
+    opacity: 0;
+  }
+
+  &:hover::before {
+    opacity: 0;
+    visibility: hidden;
+    transition-delay: 0.5s;
+  }
 }
 
-.is-hidden {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
 
 .about-me-content{
   width: 50%;
@@ -80,6 +90,7 @@
   justify-content: space-between;
   opacity: 0;
   transition: opacity 0.5s ease-in;
+
 }
 .about-me-content.fade-in{
   opacity: 1;
@@ -88,21 +99,34 @@
 .about-me-content.fade-out{
   opacity: 0;
 }
-.about-me-image{
-  transition: transform 1s ease-in-out;
-  height: 65vh;
+.about-me-image {
+  transition: transform 1s ease-in-out, filter 0.5s ease-in-out;
+  height: 100%;
   width: auto;
+  filter: blur(25px);
+  z-index: 2;
   mask-image: radial-gradient(
                   white 0%,
                   white 50%,
                   transparent 70%,
                   transparent 100%
   );
+  position: relative;
+
   &.scale-up {
     animation: scale-up 2s forwards ease-in-out;
   }
   &.scale-down {
     animation: scale-down 2s forwards ease-in-out;
+  }
+
+  &:hover {
+    filter: blur(0);
+  }
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
   }
 }
 @keyframes scale-down {
@@ -142,15 +166,6 @@
   }
 }
 
-.about-me-image.pixelated {
-  filter: blur(25px);
-  transition: filter 0.5s ease;
-}
-
-.about-me-image.pixelated:hover {
-  filter: blur(0);
-}
-
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
     transform: translateY(0);
@@ -165,12 +180,10 @@
 .social-media-wrapper:last-child {
   position: relative;
   flex-grow: 1;
-
   transform:scale(1);
   display: flex;
   align-items: center;
   justify-content: center;
-
   &.scale-up {
     animation: scale-up 2s forwards ease-in-out;
   }
@@ -250,8 +263,8 @@
   }
 
   a:hover {
-    transform: rotate(-30deg) skew(25deg) translate(8.89px, -10px); /* Adjusted translate */
-    box-shadow: -26.67px 26.67px 26.67px #000; /* 2/3 smaller box shadow */
+    transform: rotate(-30deg) skew(25deg) translate(8.89px, -10px);
+    box-shadow: -26.67px 26.67px 26.67px #000;
 
   }
 
@@ -304,9 +317,46 @@
       }
     }
   }
+  li:hover:nth-child(4) {
+    & a {
+      background: var(--quaternary-color);
+
+      &::before {
+        background: var(--quaternary-color);
+        opacity: 0.7;
+      }
+      &::after {
+        background: var(--quaternary-color);
+        opacity: 0.6;
+      }
+    }
+  }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 374px) {
+  .about-me-image-wrapper,
+  .about-me-image {
+    display: none;
+  }
+
+  .about-header{
+    width:calc(100% - 35px);
+  }
+  .about-me-content {
+    width:calc(100% - 25px);
+    display: flex;
+    flex-direction: column;
+    gap: 10vh;
+  }
+
+  .social-media-wrapper {
+    ul{
+      transform: scale(0.3);
+      transition: transform 1s ease-in-out;
+    }
+  }
+}
+@media only screen and (min-width: 375px) and (max-width: 767px) {
   .about-me-image-wrapper,
   .about-me-image {
     display: none;
@@ -330,7 +380,7 @@
   }
 }
 
-@media only screen and (min-width: 1296px) and (max-width: 1439px) {
+@media only screen and (min-width: 1296px) and (max-width: 19px) {
   .social-media-wrapper {
     ul{
       transform: scale(0.9);

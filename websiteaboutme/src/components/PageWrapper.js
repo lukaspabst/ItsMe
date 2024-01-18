@@ -5,6 +5,9 @@ import './PageWrapper.scss'
 import {CustomArrowIconDown, CustomArrowIconUP} from "../containerElements/CustomArrows/CustomArrows";
 import {useGlobalDispatch, useGlobalState} from "../GlobalContext";
 import SkillsPage from "./Skills/SkillsPage";
+import ProjectsPage from "./Projects/Projects";
+import ContactPage from "./Contact/Contact";
+
 
 
 function PageWrapper() {
@@ -12,6 +15,8 @@ function PageWrapper() {
         LandingPage: useRef(null),
         AboutPage: useRef(null),
         SkillsPage: useRef(null),
+        ProjectsPage: useRef(null),
+        ContactPage: useRef(null),
     };
 
     const state = useGlobalState();
@@ -22,30 +27,35 @@ function PageWrapper() {
         document.body.style.height = '100%';
     }
     disableBodyScroll();
-    const sectionsOrder = ['LandingPage', 'AboutPage','SkillsPage'];
+    const sectionsOrder = ['LandingPage', 'AboutPage','SkillsPage','ProjectsPage','ContactPage'];
 
-    const scrollToSection = (sectionKey) => {
+    const scrollToSection = (sectionKey,direction) => {
         const section = sectionRefs[sectionKey];
         if (section && section.current) {
             section.current.scrollIntoView({
                 behavior: 'smooth'
             });
+            if(direction==="next"){
+                dispatch({ type: 'SET_CURRENT_PAGE', payload: state.currentPage + 1 });
+            } else if(direction==="prev"){
+                dispatch({ type: 'SET_CURRENT_PAGE', payload: state.currentPage - 1 });
+            }
         }
-    };
 
+    };
+    console.log(state.currentPage);
     const handleNext = () => {
         if (state.currentPage < sectionsOrder.length) {
             const nextSection = sectionsOrder[state.currentPage];
-            scrollToSection(nextSection);
-            dispatch({ type: 'SET_CURRENT_PAGE', payload: state.currentPage + 1 });
+            scrollToSection(nextSection, "next");
+
         }
     };
 
     const handlePrev = () => {
         if (state.currentPage > 1) {
             const prevSection = sectionsOrder[state.currentPage - 2];
-            scrollToSection(prevSection);
-            dispatch({ type: 'SET_CURRENT_PAGE', payload: state.currentPage - 1 });
+            scrollToSection(prevSection,"prev");
         }
     };
 
@@ -65,7 +75,6 @@ function PageWrapper() {
 
         window.addEventListener('resize', handleResize);
 
-        // Clean up event listener on component unmount
         return () => {
             window.removeEventListener('resize', handleResize);
             window.removeEventListener('load', () => {
@@ -75,6 +84,70 @@ function PageWrapper() {
         };
     }, [sectionsOrder, state.currentPage]);
 
+    const touchStartY = useRef(null);
+    const handleTouchStart = (event) => {
+        touchStartY.current = event.touches[0].clientY;
+    };
+    const handleTouchMove = (event) => {
+        if (touchStartY.current === null || !isTouchAllowed.current) {
+            return;
+        }
+        const deltaY = touchStartY.current - event.touches[0].clientY;
+        const swipeThreshold = 10;
+
+        if (Math.abs(deltaY) > swipeThreshold) {
+            event.preventDefault();
+            isTouchAllowed.current = false;
+
+            if (!event.target.closest('.overflow-y')) {
+                if (event.deltaY > 0) {
+                    // Scrolling down
+                    handleNext();
+                } else if (event.deltaY < 0) {
+                    // Scrolling up
+                    handlePrev();
+                }
+            }
+            setTimeout(() => {
+                isTouchAllowed.current = true;
+            }, 750);
+        }
+    };
+    const handleTouchEnd = () => {
+        touchStartY.current = null;
+    };
+
+    const handleWheel = (event) => {
+        if (!isWheelEventAllowed.current) {
+            return;
+        }
+        isWheelEventAllowed.current = false;
+
+        if (!event.target.closest('.overflow-y')) {
+            if (event.deltaY > 0) {
+                handleNext();
+            } else if (event.deltaY < 0) {
+                handlePrev();
+            }
+        }
+        setTimeout(() => {
+            isWheelEventAllowed.current = true;
+        }, 1000);
+    };
+    const isWheelEventAllowed = useRef(true);
+    const isTouchAllowed = useRef(true);
+    useEffect(() => {
+        window.addEventListener('touchstart', handleTouchStart, { passive: false });
+        window.addEventListener('touchmove', handleTouchMove, { passive: false });
+        window.addEventListener('touchend', handleTouchEnd);
+        window.addEventListener('wheel', handleWheel, { passive: false });
+        return () => {
+            window.removeEventListener('touchstart', handleTouchStart);
+            window.removeEventListener('touchmove', handleTouchMove);
+            window.removeEventListener('touchend', handleTouchEnd);
+            window.removeEventListener('wheel', handleWheel);
+        };
+    }, [handleNext, handlePrev]);
 
     return (
         <div>
@@ -93,6 +166,12 @@ function PageWrapper() {
             </div>
             <div id="skills" ref={sectionRefs.SkillsPage}>
                 <SkillsPage ref={sectionRefs.SkillsPage}/>
+            </div>
+            <div id="projects" ref={sectionRefs.ProjectsPage}>
+                <ProjectsPage ref={sectionRefs.ProjectsPage}/>
+            </div>
+            <div id="contact" ref={sectionRefs.ContactPage}>
+                <ContactPage ref={sectionRefs.ContactPage}/>
             </div>
             {
                 state.currentPage < sectionsOrder.length && (

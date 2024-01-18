@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './About.scss';
 import BackgroundAbout from "../../containerElements/Backgrounds/BackgroundAbout";
 import { useInView } from "react-intersection-observer";
 import {FaGithub, FaInstagram, FaTwitter} from "react-icons/fa";
 import {useTranslation} from "react-i18next";
+import {FaXing} from "react-icons/fa6";
 
 const AboutPage = () => {
-    const [isHovered, setIsHovered] = useState(false);
     const { ref, inView } = useInView({
         threshold: 0.75,
         triggerOnce: false
@@ -44,7 +44,7 @@ const AboutPage = () => {
                 <h1 className={`about-header ${inView ? 'fade-in' : 'fade-out'}`}>{t('aboutMe.headline')}</h1>
                 <div className="content-and-Image-wrapper">
                     <div className={`about-me-content ${inView ? 'fade-in' : 'fade-out'}`}>
-                        <p className="about-text">
+                        <p className="about-text overflow-y">
                             {content.map((entry, wordIndex) =>
                                 <>
                                     <span key={wordIndex} style={{
@@ -84,35 +84,34 @@ const AboutPage = () => {
                             )}
                         </p>
                     </div>
-                        <div className="about-me-image-wrapper">
-                            <img src="/assets/pictures/img.png" alt="Me"
-                                 className={`about-me-image pixelated ${inView ? 'scale-up' : 'scale-down'}`}
-                                 onMouseOver={() => setIsHovered(true)}
-                                 onMouseOut={() => setIsHovered(false)}/>
-                            <div
-                                style={{
-                                    position: 'absolute',
-                                    top: '40%',
-                                    left: '75%',
-                                    transform: 'translate(-50%, -40%)'
-                                }}>
-                                <div
-                                    className={`image-overlay-toRevealHover ${inView ? 'is-visible' : 'is-hidden'} ${isHovered ? 'is-hidden' : ''}`}>Hover
-                                    to reveal
-                                </div>
-                            </div>
-                        </div>
+                    <div className={`about-me-image-wrapper ${inView ? 'fade-in' : 'fade-out'}`}>
+                        <img
+                            src="/assets/pictures/Dummy.jpg"
+                            alt="Me"
+                            className={`about-me-image ${inView ? 'scale-up' : 'scale-down'}`}
+                        />
                     </div>
+                </div>
 
                 <div className={`social-media-wrapper ${inView ? 'scale-up' : 'scale-down'}`}>
                     <ul>
-                        <li>
+                    <li>
                             <a href="https://github.com/lukaspabst" target="_blank" rel="noreferrer">
                                 <i className="fa-brands fa-github-f">
                                     <FaGithub/>
                                 </i>
                                 <span>
                                     - Github
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.xing.com/profile/Lukas_Pabst102" target="_blank" rel="noreferrer">
+                                <i className="fa-brands">
+                                    <FaXing/>
+                                </i>
+                                <span>
+                                    - Xing
                                 </span>
                             </a>
                         </li>

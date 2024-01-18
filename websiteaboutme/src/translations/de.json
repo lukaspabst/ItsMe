@@ -1,4 +1,5 @@
 {
+  "welcome": "Willkommen",
   "menu": {
     "landingPage": "Start",
     "about": "Über mich",
@@ -7,13 +8,22 @@
     "contact": "Kontakt"
   },
   "landingPage": {
-    "welcome": "Willkommen,",
+    "welcome": "Hallo,",
     "aboutMeText": "Ich bin Lukas, 22, und das Programmieren ist meine Leidenschaft."
   },
   "skillsPage": {
     "headline": "Meine Fähigkeiten",
     "downloadCV": "Lebenslauf herunterladen",
     "thankYou": "Vielen Dank! "
+  },
+  "contactPage": {
+    "headline": "Kontaktiere mich",
+    "reachOut": "Schreib mir gerne, wenn du Fragen hast, etwas besprechen möchtest oder an einer Zusammenarbeit interessiert bist. Dein Feedback ist immer willkommen!",
+    "responding": "Vielen Dank für deine Nachricht. Du erhältst eine Bestätigung des Eingangs , ansonsten probier es erneut. Beachte, dass die Bestätigung möglicherweise im Spam-Ordner landet.",
+    "submit": "Absenden"
+  },
+  "projectsPage": {
+    "headline": "Meine Projekte (Arbeite dran, aktuell nur Dummies)"
   },
   "aboutMe": {
     "yourInterestsOrProfession": "deine Interessen oder Beruf",
@@ -25,7 +35,8 @@
     "education": "Bachelor in Wirtschaftsinformatik",
     "languages": "Fließend in Deutsch (Muttersprache) und sicher in Englisch (schriftlich und mündlich).",
     "hobbies": "Zu meinen Hobbys gehören Kraftsport, Programmieren und Lesen.",
-    "contact": "Kontaktieren Sie mich unter lukas.pabst@outlook.de oder benutzen Sie das eingebaute Kontakt Komponente",
+    "contact": "Kontaktieren Sie mich unter lukas.pabst.business@outlook.de oder benutzen Sie die eingebaute Kontakt Komponente",
     "lookingForward": "Freue mich darauf, Kontakte zu knüpfen und spannende Möglichkeiten zu besprechen!"
-  }
+  },
+  "copyright": "2024 Alle Rechte vorbehalten."
 }

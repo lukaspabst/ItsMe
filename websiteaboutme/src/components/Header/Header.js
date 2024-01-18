@@ -5,6 +5,7 @@ import styled, { keyframes } from 'styled-components';
 import CustomBarsIcon from "../../containerElements/CustomBarIcon/BarIcon";
 import {useTranslation} from "react-i18next";
 import {useGlobalDispatch, useGlobalState} from "../../GlobalContext";
+import PageTransition from "../../PageAnimations/PageTransition";
 
 const slideIn = keyframes`
     from {
@@ -45,27 +46,55 @@ const Header = () => {
         setShowDropdown(!showDropdown);
     };
     const scrollTo = (elementId) => {
-        document.getElementById(elementId).scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => {
+                document.getElementById(elementId).scrollIntoView({ behavior: 'smooth' });
+            }, 625);
     };
     const handleLandingClick = () => {
         setPrevPage(state.currentPage);
         closeMobileMenu();
         dispatch({ type: 'SET_CURRENT_PAGE', payload: 1 });
+        startPageTransition();
     };
     const handleAboutClick = () => {
+        startPageTransition();
         setPrevPage(state.currentPage);
         closeMobileMenu();
         dispatch({ type: 'SET_CURRENT_PAGE', payload: 2 });
+
     };
     const handleSkillsClick = () => {
         setPrevPage(state.currentPage);
         closeMobileMenu();
         dispatch({ type: 'SET_CURRENT_PAGE', payload: 3 });
+        startPageTransition();
+    };
+    const handleProjectsClick = () => {
+        setPrevPage(state.currentPage);
+        closeMobileMenu();
+        dispatch({ type: 'SET_CURRENT_PAGE', payload: 4 });
+        startPageTransition();
+    };
+
+    const handleContactClick = () => {
+        setPrevPage(state.currentPage);
+        closeMobileMenu();
+        dispatch({ type: 'SET_CURRENT_PAGE', payload: 5 });
+        startPageTransition();
+    };
+    const [isTransitionActive, setIsTransitionActive] = useState(false);
+
+    const startPageTransition = () => {
+        setIsTransitionActive(true);
+        setTimeout(() => {
+            setIsTransitionActive(false);
+        }, 1800);
     };
 
     return (
         <header>
             <nav className="header-navbar">
+                {isTransitionActive && <PageTransition />}
                 <div className="logo-wrapper-header">
                     <img src="/assets/logo/logo_withoutBG_white.png" alt="logo" className="logo-header"/>
                     <Link onClick={() => {
@@ -117,13 +146,25 @@ const Header = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/projects" onClick={closeMobileMenu}>
-                                <div>{t('menu.projects')}</div>
+                            <Link onClick={() => {
+                                handleProjectsClick();
+                                scrollTo('projects');
+                            }}>
+                                <div
+                                    className={`current-page ${state.currentPage === 4 ? 'active' : ''} ${prevPage === 4 && state.currentPage !== 4 ? 'prev' : ''}`}
+                                >
+                                    {t('menu.projects')}</div>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/contact" onClick={closeMobileMenu}>
-                                <div>{t('menu.contact')}</div>
+                            <Link onClick={() => {
+                                handleContactClick();
+                                scrollTo('contact');
+                            }}>
+                                <div
+                                    className={`current-page ${state.currentPage === 5 ? 'active' : ''} ${prevPage === 5 && state.currentPage !== 5 ? 'prev' : ''}`}
+                                >
+                                    {t('menu.contact')}</div>
                             </Link>
                         </li>
                     </ul>
@@ -176,13 +217,19 @@ const Header = () => {
                             </AnimatedLi>
 
                             <AnimatedLi delay="0.75s">
-                                <Link to="/" onClick={closeMobileMenu}>
-                                    <div className="mobile-menu-element">{t('menu.contact')}</div>
+                                <Link onClick={() => {
+                                    handleProjectsClick();
+                                    scrollTo('projects');
+                                }}>
+                                    <div className="mobile-menu-element">{t('menu.projects')}</div>
                                 </Link>
                             </AnimatedLi>
                             <AnimatedLi delay="1s">
-                                <Link to="/" onClick={closeMobileMenu}>
-                                    <div className="mobile-menu-element">{t('menu.projects')}</div>
+                                <Link onClick={() => {
+                                    handleContactClick();
+                                    scrollTo('contact');
+                                }}>
+                                    <div className="mobile-menu-element">{t('menu.contact')}</div>
                                 </Link>
                             </AnimatedLi>
                         </ul>

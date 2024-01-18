@@ -39,7 +39,7 @@
       white-space: nowrap;
     }
   p {
-
+  margin:0;
     font-size: 40px;
 
   }
@@ -106,6 +106,9 @@
   width: auto;
   z-index: 10;
   transition: opacity 1.5s ease-in-out;
+  p{
+    margin-left:0;
+  }
 }
 .wrap {
   overflow: hidden;
@@ -119,7 +122,7 @@
 }
 .typing-wrapper.fade-in {
   opacity: 1;
-  transition-duration: 2.5s;
+  transition-duration: 2s;
 }
 
 .typing-wrapper.fade-out {
