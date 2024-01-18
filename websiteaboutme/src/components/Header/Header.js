@@ -86,8 +86,6 @@ const Header = () => {
 
     const startPageTransition = () => {
         setIsTransitionActive(true);
-
-        // Assuming you want to reset the transition after a certain delay (e.g., 1.5 seconds)
         setTimeout(() => {
             setIsTransitionActive(false);
         }, 1800);

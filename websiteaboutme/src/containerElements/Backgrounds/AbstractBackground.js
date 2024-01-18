@@ -1,7 +1,7 @@
 import React from 'react';
 import './Backgrounds.scss';
 
-const AbstractBackground = ({inView}) => {
+const AbstractBackground = () => {
 
     return (
         <div className="container">

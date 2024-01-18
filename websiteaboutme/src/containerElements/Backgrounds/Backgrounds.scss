@@ -211,17 +211,18 @@ section .air.air4{
 }
 
 //DOWNLOAD ANIMATION
-@function shadowValue($radius, $cosV, $sinV, $bokeh, $lineColor) {
-  $value: '#{$radius * $cosV}px #{$radius * $sinV}px #{$bokeh}px #{$lineColor}';
-  $value: '#{$value} ,#{$radius - 1 * $cosV}px #{$radius - 1 * $sinV}px #{$bokeh}px #{$lineColor}';
+
+@function shadowValue($radius,$cosV,$sinV,$bokeh,$lineColor){
+  $value: '#{($radius*$cosV)}px #{($radius*$sinV)}px #{$bokeh}px #{$lineColor}';
+  $value: '#{$value} ,#{(($radius - 1)*$cosV)}px #{(($radius - 1)*$sinV)}px #{$bokeh}px #{$lineColor}';
   $radius: $radius / 1.8;
-  $value: '#{$value} ,#{$radius * $cosV}px #{$radius * $sinV}px #{$bokeh}px #{$lineColor}';
-  $value: '#{$value} ,#{$radius - 1 * $cosV}px #{$radius - 1 * $sinV}px #{$bokeh}px #{$lineColor}';
+  $value: '#{$value} ,#{($radius*$cosV)}px #{($radius*$sinV)}px #{$bokeh}px #{$lineColor}';
+  $value: '#{$value} ,#{(($radius - 1)*$cosV)}px #{(($radius - 1)*$sinV)}px #{$bokeh}px #{$lineColor}';
   $radius: $radius / 2;
-  $value: '#{$value} ,#{$radius * $cosV}px #{$radius * $sinV}px #{$bokeh}px #{$lineColor}';
+  $value: '#{$value} ,#{($radius*$cosV)}px #{($radius*$sinV)}px #{$bokeh}px #{$lineColor}';
   $radius: $radius / 10;
-  $value: '#{$value} ,#{$radius * $cosV}px #{$radius * $sinV}px #{$bokeh}px #{$lineColor}';
-  @return unquote($value);
+  $value: '#{$value} ,#{($radius*$cosV)}px #{($radius*$sinV)}px #{$bokeh}px #{$lineColor}';
+@return unquote($value)
 }
 
 @function ringEffect($n, $radius, $bokeh, $lineColor) {

@@ -71,3 +71,6 @@ a {
   text-decoration: none;
   color: inherit;
 }
+.overflow-y{
+  overflow-y: auto;
+}

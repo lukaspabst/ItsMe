@@ -7,12 +7,8 @@ import Project from "./Project";
 import {
     FaAngleLeft,
     FaAngleRight,
-    FaAnglesLeft,
-    FaAnglesRight,
-    FaArrowRightLong,
-    FaRightToBracket
 } from "react-icons/fa6";
-import {Link} from "react-router-dom";
+
 
 const ProjectsPage = () => {
     const { ref, inView } = useInView({
@@ -50,15 +46,12 @@ const ProjectsPage = () => {
             <section className={`project-section ${inView ? 'appear' : 'disappear'}`}>
                 <div className="projects-container">
                     <h1>{t('projectsPage.headline')}</h1>
-
                     <div className="projects-spinner-container">
-
                         <div className="project-next-left" id="prevButton">
                             <button onClick={handlePrevButtonClick}>
                                 <FaAngleLeft/>
                             </button>
                         </div>
-
                         <div className="project-slider-wrapper">
                             <div className="project-slider">
                                 <ul id="ul-slider">
@@ -84,12 +77,10 @@ const ProjectsPage = () => {
                                 <FaAngleRight/>
                             </button>
                         </div>
-
                     </div>
                 </div>
             </section>
         </div>
     );
 };
-
 export default ProjectsPage;

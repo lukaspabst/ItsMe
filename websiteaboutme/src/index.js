@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { I18nextProvider } from 'react-i18next';  // Import I18nextProvider
+import { I18nextProvider } from 'react-i18next';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import i18n from './i18nConfig';
-import {GlobalProvider} from "./GlobalContext"; // Import the i18n instance
+import {GlobalProvider} from "./GlobalContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -2,13 +2,11 @@
   position: absolute;
   top:calc(100vh + 80px);
   width: 100%;
-
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   text-align: left;
   height: calc(100vh - 80px - 35px);
-
 }
 
 .about-header {
@@ -35,7 +33,6 @@
   font-size: 1.5em;
   letter-spacing: 0.1em;
   max-height: 50vh;
-  overflow-y: auto;
   overflow-x: hidden;
   span {
     opacity: 0;
@@ -56,24 +53,34 @@
   width: 50%;
   height: 100%;
   transform:scale(1);
-}
-.image-overlay-toRevealHover{
-  font-size: 18px;
-  color: #fff;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-  animation: bounce 2s infinite;
-}
-.is-visible {
-  opacity: 1;
-  transition: opacity 1s ease-in-out;
-  transition-delay:2s;
+  &::before {
+    content: "Hover to Reveal";
+    position: absolute;
+    top: 50%;
+    font-size: 1.2em;
+    color: #fff;
+    opacity: 0; visibility: visible;
+    transition: opacity 0.5s ease-in-out ;
+    animation: bounce 2s infinite;
+    z-index: 22;
+  }
+
+  &.fade-in::before {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out 1.5s forwards, bounce 2s infinite;;
+  }
+
+  &.fade-out::before {
+    opacity: 0;
+  }
+
+  &:hover::before {
+    opacity: 0;
+    visibility: hidden;
+    transition-delay: 0.5s;
+  }
 }
 
-.is-hidden {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
 
 .about-me-content{
   width: 50%;
@@ -92,21 +99,34 @@
 .about-me-content.fade-out{
   opacity: 0;
 }
-.about-me-image{
-  transition: transform 1s ease-in-out;
+.about-me-image {
+  transition: transform 1s ease-in-out, filter 0.5s ease-in-out;
   height: 100%;
   width: auto;
+  filter: blur(25px);
+  z-index: 2;
   mask-image: radial-gradient(
                   white 0%,
                   white 50%,
                   transparent 70%,
                   transparent 100%
   );
+  position: relative;
+
   &.scale-up {
     animation: scale-up 2s forwards ease-in-out;
   }
   &.scale-down {
     animation: scale-down 2s forwards ease-in-out;
+  }
+
+  &:hover {
+    filter: blur(0);
+  }
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
   }
 }
 @keyframes scale-down {
@@ -146,15 +166,6 @@
   }
 }
 
-.about-me-image.pixelated {
-  filter: blur(25px);
-  transition: filter 0.5s ease;
-}
-
-.about-me-image.pixelated:hover {
-  filter: blur(0);
-}
-
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
     transform: translateY(0);
@@ -169,7 +180,6 @@
 .social-media-wrapper:last-child {
   position: relative;
   flex-grow: 1;
-
   transform:scale(1);
   display: flex;
   align-items: center;

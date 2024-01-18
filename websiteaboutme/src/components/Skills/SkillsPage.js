@@ -3,7 +3,6 @@ import {useInView} from "react-intersection-observer";
 import {useTranslation} from "react-i18next";
 import BackgroundSkills from "../../containerElements/Backgrounds/BackgroundSkills";
 import './SkillsPage.scss';
-
 import {FaFileDownload} from "react-icons/fa";
 import Skill from "./Skill";
 
@@ -43,7 +42,6 @@ const SkillPage = () => {
                 const intervalId = setInterval(() => {
                     setCountdown(prevCount => prevCount - 1);
                 }, 1000);
-                // Cancel countdown after 15 seconds and re-enable button
                 setTimeout(() => {
                     setTriggerFireworks(false);
                     setIsClicked(false);
@@ -60,7 +58,7 @@ const SkillPage = () => {
                 <div className="skills-header">
                     <h1>{t('skillsPage.headline')}</h1>
                 </div>
-                <div className="grid-container">
+                <div className="grid-container overflow-y">
                     {skillsContent.map((skill, index) => (
                         <Skill
                             key={index}
@@ -72,7 +70,7 @@ const SkillPage = () => {
                         />
                     ))}
                 </div>
-                <div className="download-cv-container">
+                <div className="download-cv-container overflow-y">
                     <div className={`button-wrapper ${inView ? 'scale-up' : 'scale-down'}`}>
                         <a href="/CV/Dummy.pdf" download
                            className={`button-cv-download ${isClicked ? 'deactivated' : ''}`} onClick={handleClick}>

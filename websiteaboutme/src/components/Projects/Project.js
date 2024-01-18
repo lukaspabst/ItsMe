@@ -1,12 +1,12 @@
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
 
-const Project = ({ name, image, tags, githubRepo, index, active, description, link}) => {
+const Project = ({ name, tags, githubRepo, description, link}) => {
     return (
         <div className="project">
             <a href={link} target="_blank" rel="noopener noreferrer">
                 <div className="project-image"></div>
-                <div className="project-details">
+                <div className="project-details overflow-y">
                     <div className="projects-head-wrapper">
                         <h2>{name}</h2>
                         <span className="github-Repo">
