@@ -23,7 +23,6 @@ const WelcomeAnimation = () => {
             <div className="text-container">
                 <h1>{t('welcome')}</h1>
             </div>
-            <div className="ellipse"></div>
         </div>
     );
 };

@@ -9,7 +9,7 @@
   overflow: hidden;
   z-index: 9999;
   width: 100%;
-  background: radial-gradient(ellipse at bottom, var(--background-color) 0%, #030617 100%);
+  background: radial-gradient(ellipse at bottom, var(--quaternary-color) 0%, #030617 100%);
   animation: reduceHeight 1.5s cubic-bezier(0.87, 0, 0.13, 1) 2s forwards;
 }
 
