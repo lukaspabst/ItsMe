@@ -333,12 +333,14 @@
   }
 }
 
-@media only screen and (max-width: 374px) {
+@media only screen and (max-width: 434px) {
   .about-me-image-wrapper,
   .about-me-image {
     display: none;
   }
-
+  .about-text{
+    font-size: 1em;
+  }
   .about-header{
     width:calc(100% - 35px);
   }
@@ -350,18 +352,22 @@
   }
 
   .social-media-wrapper {
-    ul{
-      transform: scale(0.3);
-      transition: transform 1s ease-in-out;
-    }
+   ul{
+     li{
+      display: none;
+     }
+   }
   }
 }
-@media only screen and (min-width: 375px) and (max-width: 767px) {
+
+@media only screen and (min-width: 435px) and (max-width: 767px) {
   .about-me-image-wrapper,
   .about-me-image {
     display: none;
   }
-
+  .about-text{
+    font-size: 1.2em;
+  }
   .about-header{
     width:calc(100% - 35px);
   }
@@ -380,7 +386,7 @@
   }
 }
 
-@media only screen and (min-width: 1296px) and (max-width: 19px) {
+@media only screen and (min-width: 1296px) and (max-width: 1900px) {
   .social-media-wrapper {
     ul{
       transform: scale(0.9);

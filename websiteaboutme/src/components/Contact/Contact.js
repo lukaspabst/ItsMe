@@ -18,7 +18,7 @@ const ContactForm = ({ onSubmit, submitted }) => {
 
         try {
             formData.language = i18n.language.toUpperCase();
-            const response = await fetch('http://lukas-pabst.dev:3001/submitForm', {
+            const response = await fetch('http://localhost:3001/submitForm', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

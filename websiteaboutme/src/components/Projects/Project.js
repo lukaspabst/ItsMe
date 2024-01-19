@@ -6,8 +6,8 @@ const Project = ({ name, tags, githubRepo, description, link}) => {
         <div className="project">
             <a href={link} target="_blank" rel="noopener noreferrer">
                 <div className="project-image"></div>
-                <div className="project-details overflow-y">
-                    <div className="projects-head-wrapper">
+                <div className="project-details ">
+                    <div className="projects-head-wrapper overflow-y">
                         <h2>{name}</h2>
                         <span className="github-Repo">
                             <a href={githubRepo} target="_blank" rel="noopener noreferrer">
@@ -16,7 +16,7 @@ const Project = ({ name, tags, githubRepo, description, link}) => {
                         </span>
                         <p>{description}</p>
                     </div>
-                    <div className="project-tags">
+                    <div className="project-tags overflow-y">
                         <h3>Frameworks and Languages</h3>
                         <ul>
                             {tags.map((tag, tagIndex) => (

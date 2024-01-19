@@ -273,7 +273,7 @@ p {
   opacity: 0.5;
 }
 
-@media only screen and (max-width: 1068px) {
+@media only screen and (min-width: 769px) and (max-width: 1068px) {
 
   p {
     font-size: 18px;
@@ -286,5 +286,31 @@ p {
   }
   p {
     font-size: 12px;
+  }
+}
+@media only screen and (min-height: 701px) and (max-height: 1050px){
+  .form-name,
+  .form-email,
+  .form-message{
+   label{
+     input {
+       font-size: 24px;
+     }
+    }
+    textarea{
+      font-size: 24px}
+  }
+}
+@media only screen and (max-height: 700px){
+  .form-name,
+  .form-email,
+  .form-message{
+    label{
+      input {
+        font-size: 18px;
+      }
+    }
+    textarea{
+      font-size: 18px}
   }
 }

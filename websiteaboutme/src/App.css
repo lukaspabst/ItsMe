@@ -1,5 +1,3 @@
-@import 'normalize.css';
-
 :root {
   --primary-color: #5A87C2;
   --secondary-color: #2B4D7F;
@@ -72,5 +70,5 @@ a {
   color: inherit;
 }
 .overflow-y{
-  overflow-y: auto;
+  overflow-y: scroll;
 }

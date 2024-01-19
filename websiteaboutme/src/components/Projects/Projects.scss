@@ -153,7 +153,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow-x: hidden;
+  overflow: hidden;
   p {
     margin-top: 25px;
     font-size: 26px;
@@ -162,6 +162,11 @@
   }
   h2,h3{
     font-size: 32px;
+  }
+  .projects-head-wrapper{
+    height:75%;
+    display: block;
+    overflow-x:hidden;
   }
   .github-Repo{
     display: flex;
@@ -187,6 +192,7 @@
     }
   }
   .project-tags{
+    height: 25%;
     ul{
       list-style-type: none;
       margin:0;
@@ -205,10 +211,31 @@
     }
   }
 }
-
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 350px) {
+  .project-slider-wrapper{
+    transform: scale(0.85);
+  }
   .project-slider{
     width: 80%;
+  }
+  .project-details {
+    h2,h3{
+      font-size: 16px;
+    }
+    .github-Repo a{
+      font-size: 10px;
+    }
+    p{
+      font-size: 10px;
+      text-align: left;
+    }}
+  .projects-container h1{
+    font-size: 14px;
+  }
+}
+@media only screen and (min-width: 351px) and (max-width: 1050px) {
+  .project-slider{
+    width: 95%;
   }
   .project-details {
     h2,h3{
@@ -225,15 +252,19 @@
     font-size: 18px;
   }
 }
-@media only screen and (min-width: 769px) and (max-width: 1199px) {
+@media only screen and (min-width: 1051px) and (max-width: 1655px) {
   .project-slider {
-    width: 65%;
+    width: 75%;
   }
 
-  .project-details  h2,h3 {
-    font-size: 26px;
+  .project-details {
+    h2 {
+      font-size: 26px;
+    }
+    h3{
+      font-size: 20px;
+    }
   }
-
 
   .project-details p {
     font-size: 20px;

@@ -21,15 +21,16 @@
     white-space: nowrap;
   }
 }
-.grid-container{
+.grid-container-wrapper{
   width: 90%;
+  height: 50%;
+  overflow-x:hidden;
+}
+.grid-container{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 75px;
   grid-gap: 15px;
-  height: 50%;
-
-  overflow-x: hidden;
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import LandingPage from './Landing/LandingPage';
 import AboutPage from './About/About';
 import './PageWrapper.scss'
@@ -21,7 +21,6 @@ function PageWrapper() {
 
     const state = useGlobalState();
     const dispatch = useGlobalDispatch();
-
     let disableBodyScroll = () => {
         document.body.style.overflow = 'hidden';
         document.body.style.height = '100%';
@@ -92,6 +91,7 @@ function PageWrapper() {
         if (touchStartY.current === null || !isTouchAllowed.current) {
             return;
         }
+
         const deltaY = touchStartY.current - event.touches[0].clientY;
         const swipeThreshold = 10;
 
@@ -99,20 +99,27 @@ function PageWrapper() {
             event.preventDefault();
             isTouchAllowed.current = false;
 
-            if (!event.target.closest('.overflow-y')) {
-                if (event.deltaY > 0) {
-                    // Scrolling down
+            const targetElement = event.target.closest('.overflow-y');
+
+            const hasVerticalOverflow = targetElement
+                ? targetElement.scrollHeight > targetElement.clientHeight &&
+                window.getComputedStyle(targetElement).overflowY !== 'visible'
+                : false;
+
+            if ((!targetElement && !hasVerticalOverflow) || (targetElement && !hasVerticalOverflow)) {
+                if (deltaY > 0) {
                     handleNext();
-                } else if (event.deltaY < 0) {
-                    // Scrolling up
+                } else if (deltaY < 0) {
                     handlePrev();
                 }
             }
+
             setTimeout(() => {
                 isTouchAllowed.current = true;
             }, 750);
         }
     };
+
     const handleTouchEnd = () => {
         touchStartY.current = null;
     };
@@ -123,19 +130,30 @@ function PageWrapper() {
         }
         isWheelEventAllowed.current = false;
 
-        if (!event.target.closest('.overflow-y')) {
-            if (event.deltaY > 0) {
-                handleNext();
-            } else if (event.deltaY < 0) {
-                handlePrev();
-            }
+        const targetElement = event.target.closest('.overflow-y');
+
+        const hasVerticalOverflow = targetElement
+            ? targetElement.scrollHeight > targetElement.clientHeight &&
+            window.getComputedStyle(targetElement).overflowY !== 'visible'
+            : false;
+
+        if ((!targetElement && !hasVerticalOverflow) ||(targetElement && !hasVerticalOverflow))  {
+
+                if (event.deltaY > 10) {
+                    handleNext();
+                } else if (event.deltaY < -10) {
+                    handlePrev();
+                }
+
         }
+
         setTimeout(() => {
             isWheelEventAllowed.current = true;
         }, 1000);
     };
     const isWheelEventAllowed = useRef(true);
     const isTouchAllowed = useRef(true);
+
     useEffect(() => {
         window.addEventListener('touchstart', handleTouchStart, { passive: false });
         window.addEventListener('touchmove', handleTouchMove, { passive: false });

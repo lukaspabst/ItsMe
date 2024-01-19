@@ -58,7 +58,8 @@ const SkillPage = () => {
                 <div className="skills-header">
                     <h1>{t('skillsPage.headline')}</h1>
                 </div>
-                <div className="grid-container overflow-y">
+                <div className="grid-container-wrapper overflow-y">
+                <div className="grid-container ">
                     {skillsContent.map((skill, index) => (
                         <Skill
                             key={index}
@@ -70,7 +71,8 @@ const SkillPage = () => {
                         />
                     ))}
                 </div>
-                <div className="download-cv-container overflow-y">
+                </div>
+                <div className="download-cv-container">
                     <div className={`button-wrapper ${inView ? 'scale-up' : 'scale-down'}`}>
                         <a href="/CV/Dummy.pdf" download
                            className={`button-cv-download ${isClicked ? 'deactivated' : ''}`} onClick={handleClick}>
