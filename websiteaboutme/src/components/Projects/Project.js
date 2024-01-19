@@ -1,11 +1,19 @@
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
 
-const Project = ({ name, tags, githubRepo, description, link}) => {
+const Project = ({ name, tags, githubRepo, description, link, image}) => {
+    const projectImageStyle = {
+        width: '50%',
+        background: `url(${image}) center`,
+        backgroundSize: '100% 100%',
+        borderTopLeftRadius: '10px',
+        borderBottomLeftRadius: '10px',
+    };
+
     return (
         <div className="project">
             <a href={link} target="_blank" rel="noopener noreferrer">
-                <div className="project-image"></div>
+                <div className="project-image" style={projectImageStyle}></div>
                 <div className="project-details ">
                     <div className="projects-head-wrapper overflow-y">
                         <h2>{name}</h2>
@@ -27,8 +35,7 @@ const Project = ({ name, tags, githubRepo, description, link}) => {
                 </div>
             </a>
         </div>
-
-)
+    )
     ;
 };
 
