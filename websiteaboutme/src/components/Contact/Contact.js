@@ -4,6 +4,7 @@ import {useTranslation} from "react-i18next";
 import BackgroundSkills from "../../containerElements/Backgrounds/BackgroundSkills";
 import './Contact.scss'
 import i18n from "i18next";
+
 const ContactForm = ({ onSubmit, submitted }) => {
     const {t} = useTranslation();
     const [formData, setFormData] = useState({
@@ -12,13 +13,18 @@ const ContactForm = ({ onSubmit, submitted }) => {
         message: "",
         language: "",
     });
-
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (isButtonDisabled) {
+            return;
+        }
 
         try {
             formData.language = i18n.language.toUpperCase();
-            const response = await fetch('http://localhost:3001/submitForm', {
+            setIsButtonDisabled(true);
+            const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -28,9 +34,12 @@ const ContactForm = ({ onSubmit, submitted }) => {
 
             const result = await response.json();
             console.log(result.message);
-        } catch (error) {
+        }  catch (error) {
             console.error('Error submitting form:', error);
+        } finally {
+            setIsButtonDisabled(false);
         }
+
 
         onSubmit();
 
@@ -90,7 +99,7 @@ const ContactForm = ({ onSubmit, submitted }) => {
 
             <div className="form-submit">
                 <div className="button-wrapper-contact">
-                    <button className="button-contact-download" type="submit">
+                    <button className="button-contact-download" type="submit"  disabled={isButtonDisabled}>
                         <h1>{t('contactPage.submit')}</h1>
                     </button>
                 </div>
