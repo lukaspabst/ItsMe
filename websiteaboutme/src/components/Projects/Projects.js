@@ -21,7 +21,7 @@ const ProjectsPage = () => {
         {
             name: 'Web-Chess',
             link: "https://lukas-pabst.dev",
-            description: "This is a simple chess game implemented in JavaScript. You can create a lobby, share the link with a friend, and play chess against each other directly.",
+            descriptionKey: "webChess",
             image: "../../../assets/projects/Placeholder.png",
             tags: ["JavaScript", "Angular", "CSS", "Node"],
             githubRepo: "https://github.com/lukaspabst"
@@ -29,10 +29,7 @@ const ProjectsPage = () => {
         {
             name: 'TravelBuddy',
             link: "https://lukas-pabst.dev",
-            description: "TravelBuddy is a comprehensive travel companion app developed using JavaScript and React." +
-                " Plan and manage your trips seamlessly with an intuitive user interface." +
-                " Share your travel experiences and itinerary with friends." +
-                " The backend is powered by Spring and Java, with MongoDB serving as the database for efficient data storage and retrieval.",
+            descriptionKey: "travelBuddy",
             image: "../../../assets/projects/Placeholder.png",
             tags: ["JavaScript", "React", "CSS", "Java", "Spring", "JUnit", "MongoDB"],
             githubRepo: "https://github.com/lukaspabst"
@@ -40,7 +37,7 @@ const ProjectsPage = () => {
         {
             name: 'Styles-Library',
             link: "https://lukas-pabst.dev",
-            description: "Styles-Library is a collection of reusable styles and components for web development. Built with JavaScript, React, and Node.",
+            descriptionKey: "stylesLibrary",
             image: "../../../assets/projects/Placeholder.png",
             tags: ["JavaScript", "React", "CSS", "Node"],
             githubRepo: "https://github.com/lukaspabst"
@@ -48,7 +45,7 @@ const ProjectsPage = () => {
         {
             name: 'Another Project',
             link: "https://lukas-pabst.dev",
-            description: "This is another exciting project with a unique description. Feel free to explore and contribute!",
+            descriptionKey: "anotherProject",
             image: "../../../assets/projects/Placeholder.png",
             tags: ["JavaScript", "React", "CSS", "Node"],
             githubRepo: "https://github.com/lukaspabst"
@@ -90,7 +87,7 @@ const ProjectsPage = () => {
                                 <li key={index} className={`single-project position-${positions[index]}`}>
                                 <Project
                                     key={index}
-                                    description={projects.description}
+                                    descriptionKey={projects.descriptionKey}
                                     name={projects.name}
                                     image={projects.image}
                                     tags={projects.tags}

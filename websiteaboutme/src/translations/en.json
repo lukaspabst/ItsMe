@@ -23,7 +23,13 @@
     "submit": "Submit"
   },
   "projectsPage": {
-    "headline": "My Projects (Currently working on, so only Dummies)"
+    "headline": "My Projects (Currently working on, so only Dummies)",
+    "projects": {
+      "webChess": "This is a simple chess game implemented in JavaScript. You can create a lobby, share the link with a friend, and play chess against each other directly.",
+      "travelBuddy": "TravelBuddy is a comprehensive travel companion app developed using JavaScript and React. Plan and manage your trips seamlessly with an intuitive user interface. Share your travel experiences and itinerary with friends. The backend is powered by Spring and Java, with MongoDB serving as the database for efficient data storage and retrieval.",
+      "stylesLibrary": "Styles-Library is a collection of reusable styles and components for web development. Built with JavaScript, React, and Node.",
+      "anotherProject": "This is another exciting project with a unique description. Feel free to explore and contribute!"
+    }
   },
   "aboutMe": {
     "headline": "About Me",

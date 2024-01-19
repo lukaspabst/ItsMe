@@ -1,7 +1,9 @@
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
+import {useTranslation} from "react-i18next";
 
-const Project = ({ name, tags, githubRepo, description, link, image}) => {
+const Project = ({ name, tags, githubRepo, descriptionKey, link, image}) => {
+    const { t } = useTranslation();
     const projectImageStyle = {
         width: '50%',
         background: `url(${image}) center`,
@@ -22,7 +24,7 @@ const Project = ({ name, tags, githubRepo, description, link, image}) => {
                                 <FaGithub/> {name} Repository
                             </a>
                         </span>
-                        <p>{description}</p>
+                        <p>{t(`projectsPage.projects.${descriptionKey}`)}</p>
                     </div>
                     <div className="project-tags overflow-y">
                         <h3>Frameworks and Languages</h3>
