@@ -7,15 +7,13 @@ import reportWebVitals from './reportWebVitals';
 import i18n from './i18nConfig';
 import {GlobalProvider} from "./GlobalContext";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    <React.StrictMode>
-        <I18nextProvider i18n={i18n}>
-            <GlobalProvider>
-                <App />
-            </GlobalProvider>
-        </I18nextProvider>
-    </React.StrictMode>,
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+    <I18nextProvider i18n={i18n}>
+        <GlobalProvider>
+            <App />
+        </GlobalProvider>
+    </I18nextProvider>
 );
 
 reportWebVitals();

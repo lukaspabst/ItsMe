@@ -76,7 +76,7 @@ const ProjectsPage = () => {
                     <h1>{t('projectsPage.headline')}</h1>
                     <div className="projects-spinner-container">
                         <div className="project-next-left" id="prevButton">
-                            <button onClick={handlePrevButtonClick}>
+                            <button aria-label="Slide To Left" onClick={handlePrevButtonClick}>
                                 <FaAngleLeft/>
                             </button>
                         </div>
@@ -100,7 +100,7 @@ const ProjectsPage = () => {
                             </div>
                         </div>
                         <div className="project-next-right">
-                            <button onClick={handleNextButtonClick}>
+                            <button onClick={handleNextButtonClick} aria-label="Slide to Right">
                                 <FaAngleRight/>
                             </button>
                         </div>

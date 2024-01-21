@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const Skill = ({ name, icon, percentage, index, inView }) => {
     const [animationClass, setAnimationClass] = useState('');
     const progressBarAnimation =
-        inView &&   `progress-forward var(--time) linear forwards ${index * 0.5}s`;
+        inView &&   `progress-forward var(--time) linear forwards ${index * 0.25}s`;
     useEffect(() => {
         if (inView) {
             setAnimationClass(index % 2 === 0 ? 'fly-in-left' : 'fly-in-right');
@@ -13,7 +13,7 @@ const Skill = ({ name, icon, percentage, index, inView }) => {
     }, [inView, index]);
 
         return (
-            <div className={`skill-container ${animationClass}`}  style={{animationDelay: animationClass.includes('fly-out') ? '0s' : `${index * 0.5}s`,
+            <div className={`skill-container ${animationClass}`}  style={{animationDelay: animationClass.includes('fly-out') ? '0s' : `${index * 0.25}s`,
                 opacity: animationClass.includes('fly-in') ? 0 : 1
             }}>
                 <div className="skill-icon">

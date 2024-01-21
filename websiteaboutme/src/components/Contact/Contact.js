@@ -89,7 +89,7 @@ const ContactForm = ({ onSubmit, submitted }) => {
             <div className="form-message">
                 <label>
           <textarea
-              name="message"
+              id="message" name="message"
               value={formData.message}
               onChange={handleInputChange}
               required
@@ -99,7 +99,7 @@ const ContactForm = ({ onSubmit, submitted }) => {
 
             <div className="form-submit">
                 <div className="button-wrapper-contact">
-                    <button className="button-contact-download" type="submit"  disabled={isButtonDisabled}>
+                    <button className="button-contact-download" type="submit"  aria-label="Submit" disabled={isButtonDisabled}>
                         <h1>{t('contactPage.submit')}</h1>
                     </button>
                 </div>

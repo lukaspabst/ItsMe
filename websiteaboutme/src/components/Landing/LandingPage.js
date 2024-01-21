@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import AbstractBackground from '../../containerElements/Backgrounds/AbstractBackground';
+import LandingBackground from '../../containerElements/Backgrounds/LandingBackground';
 import './LandingPage.scss';
 import {useInView} from "react-intersection-observer";
 import {useTranslation} from "react-i18next";
@@ -92,7 +92,7 @@ const LandingPage = () => {
 
     return (
         <div ref={ref}>
-            <AbstractBackground inView={inView}/>
+            <LandingBackground inView={inView}/>
             {(hasVisitedBefore === null || hasVisitedBefore === false) && (
                 <WelcomeAnimation/>
             )}

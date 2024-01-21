@@ -96,7 +96,7 @@ const Header = () => {
             <nav className="header-navbar">
                 {isTransitionActive && <PageTransition />}
                 <div className="logo-wrapper-header">
-                    <img src="/assets/logo/logo_withoutBG_white.png" alt="logo" className="logo-header"/>
+                    <img src="/assets/logo/logo_withoutBG_white.webp" alt="logo" className="logo-header" loading="eager"/>
                     <Link onClick={() => {
                         handleLandingClick();
                         scrollTo('landingPage');
@@ -111,13 +111,13 @@ const Header = () => {
                 <div className="menu-desktop-header">
                     <ul>
                         <li className="dropdown-container">
-                            <button className="dropdown-button" onClick={toggleDropdown}>
+                            <button className="dropdown-button" aria-label="Language Dropdown" onClick={toggleDropdown}>
                                 {i18n.language.toUpperCase()}
                             </button>
                             {showDropdown && (
                                 <div className="dropdown-content">
-                                    <button className="button" onClick={() => changeLanguage('en')}>EN</button>
-                                    <button className="button" onClick={() => changeLanguage('de')}>DE</button>
+                                    <button className="button" aria-label="English" onClick={() => changeLanguage('en')}>EN</button>
+                                    <button className="button" aria-label="German" onClick={() => changeLanguage('de')}>DE</button>
                                 </div>
                             )}
                         </li>
@@ -173,14 +173,14 @@ const Header = () => {
 
                     <div className="dropdown-container">
                         <div>
-                            <button className="dropdown-button" onClick={toggleDropdown}>
+                            <button className="dropdown-button" aria-label="Language Dropdwon" onClick={toggleDropdown}>
                                 {i18n.language.toUpperCase()}
                             </button>
                             </div>
                             {showDropdown && (
                                 <div className="dropdown-content">
-                                    <button className="button" onClick={() => changeLanguage('en')}>EN</button>
-                                    <button className="button" onClick={() => changeLanguage('de')}>DE</button>
+                                    <button className="button" aria-label="English" onClick={() => changeLanguage('en')}>EN</button>
+                                    <button className="button" aria-label="German" onClick={() => changeLanguage('de')}>DE</button>
                                 </div>
                             )}
                         </div>

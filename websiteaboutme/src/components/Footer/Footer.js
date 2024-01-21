@@ -9,16 +9,16 @@ const Footer = () => {
         <footer>
             <div className="footer-content">
                 <div className="social-media">
-                    <a href="https://github.com/lukaspabst" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/lukaspabst" target="_blank" rel="noopener noreferrer" aria-label="Github Link">
                         <FaGithub/>
                     </a>
-                    <a href="https://www.xing.com/profile/Lukas_Pabst102" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.xing.com/profile/Lukas_Pabst102" target="_blank" rel="noopener noreferrer" aria-label="Xing Link">
                         <FaXing/>
                     </a>
-                    <a href="https://twitter.com/ZenayoK" target="_blank" rel="noopener noreferrer">
+                    <a href="https://twitter.com/ZenayoK" target="_blank" rel="noopener noreferrer" aria-label="Twitter Link">
                         <FaTwitter/>
                     </a>
-                    <a href="https://www.instagram.com/lukas_23.03" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.instagram.com/lukas_23.03" target="_blank" rel="noopener noreferrer" aria-label="Instagram Link">
                         <FaInstagram/>
                     </a>
                 </div>

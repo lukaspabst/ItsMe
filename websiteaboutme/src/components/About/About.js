@@ -86,7 +86,7 @@ const AboutPage = () => {
                     </div>
                     <div className={`about-me-image-wrapper ${inView ? 'fade-in' : 'fade-out'}`}>
                         <img
-                            src="/assets/pictures/Dummy.jpg"
+                            src="/assets/pictures/ItsMe.webp"
                             alt="Me"
                             className={`about-me-image ${inView ? 'scale-up' : 'scale-down'}`}
                         />
@@ -96,7 +96,7 @@ const AboutPage = () => {
                 <div className={`social-media-wrapper ${inView ? 'scale-up' : 'scale-down'}`}>
                     <ul>
                     <li>
-                            <a href="https://github.com/lukaspabst" target="_blank" rel="noreferrer">
+                            <a href="https://github.com/lukaspabst" target="_blank" rel="noreferrer"  aria-label="Github Link">>
                                 <i className="fa-brands fa-github-f">
                                     <FaGithub/>
                                 </i>
@@ -106,7 +106,7 @@ const AboutPage = () => {
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.xing.com/profile/Lukas_Pabst102" target="_blank" rel="noreferrer">
+                            <a href="https://www.xing.com/profile/Lukas_Pabst102" target="_blank" rel="noreferrer"  aria-label="Xing Link">>
                                 <i className="fa-brands">
                                     <FaXing/>
                                 </i>
@@ -116,7 +116,7 @@ const AboutPage = () => {
                             </a>
                         </li>
                         <li>
-                            <a href="https://twitter.com/ZenayoK" target="_blank" rel="noreferrer">
+                            <a href="https://twitter.com/ZenayoK" target="_blank" rel="noreferrer"  aria-label="Twitter Link">>
                                 <i className="fa-brands">
                                     <FaTwitter/>
                                 </i>
@@ -126,7 +126,7 @@ const AboutPage = () => {
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.instagram.com/lukas_23.03" target="_blank" rel="noreferrer">
+                            <a href="https://www.instagram.com/lukas_23.03" target="_blank" rel="noreferrer"  aria-label="Instagram Link">>
                                 <i className="fa-brands">
                                     <FaInstagram/>
                                 </i>

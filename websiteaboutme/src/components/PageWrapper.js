@@ -42,7 +42,6 @@ function PageWrapper() {
         }
 
     };
-    console.log(state.currentPage);
     const handleNext = () => {
         if (state.currentPage < sectionsOrder.length) {
             const nextSection = sectionsOrder[state.currentPage];
@@ -171,7 +170,7 @@ function PageWrapper() {
         <div>
             {
                 state.currentPage > 1 && (
-                    <button className="pagewrapper-prevButton" onClick={handlePrev}>
+                    <button className="pagewrapper-prevButton" aria-label="Previous page" onClick={handlePrev}>
                         <CustomArrowIconUP/>
                     </button>
                 )
@@ -195,7 +194,7 @@ function PageWrapper() {
                 state.currentPage < sectionsOrder.length && (
                     <button
                         className={`pagewrapper-nextButton ${state.currentPage === 2 ? "about-next-button" : ""}`}
-                        onClick={handleNext}
+                        onClick={handleNext} aria-label="Next page"
                     >
                         <CustomArrowIconDown/>
                     </button>

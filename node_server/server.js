@@ -66,7 +66,6 @@ app.post('/submitForm', async (req, res) => {
 
         await transporter.sendMail(mailOptionsToUser);
 
-        console.log('Emails sent successfully');
         res.json({ message: 'Form submitted successfully' });
     } catch (error) {
         console.error('Error sending emails:', error);

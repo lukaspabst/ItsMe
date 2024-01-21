@@ -14,13 +14,13 @@ const Project = ({ name, tags, githubRepo, descriptionKey, link, image}) => {
 
     return (
         <div className="project">
-            <a href={link} target="_blank" rel="noopener noreferrer">
+            <a href={link} target="_blank" rel="noopener noreferrer"  aria-label="Project Link">>
                 <div className="project-image" style={projectImageStyle}></div>
                 <div className="project-details ">
                     <div className="projects-head-wrapper overflow-y">
                         <h2>{name}</h2>
                         <span className="github-Repo">
-                            <a href={githubRepo} target="_blank" rel="noopener noreferrer">
+                            <a href={githubRepo} target="_blank" rel="noopener noreferrer"  aria-label="Github Repo-Link">>
                                 <FaGithub/> {name} Repository
                             </a>
                         </span>
