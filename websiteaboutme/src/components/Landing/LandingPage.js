@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useState} from 'react';
 import LandingBackground from '../../containerElements/Backgrounds/LandingBackground';
 import './LandingPage.scss';
 import {useInView} from "react-intersection-observer";
@@ -23,20 +23,21 @@ const LandingPage = () => {
         });
     }, [inView]);
 
-    var TxtType = function(el, toRotate, period,delayBeforeStart) {
+    const TxtType = function (el, toRotate, period, delayBeforeStart) {
         this.toRotate = toRotate;
         this.el = el;
         this.loopNum = 0;
         this.period = parseInt(period, 10) || 1500;
         this.txt = '';
         this.delayBeforeStart = parseInt(delayBeforeStart, 10) || 500;
-        this.tick();
         this.isDeleting = false;
+
+        this.tick();
     };
 
     TxtType.prototype.tick = function() {
-        var i = this.loopNum % this.toRotate.length;
-        var fullTxt = this.toRotate[i];
+        const i = this.loopNum % this.toRotate.length;
+        const fullTxt = this.toRotate[i];
 
         if (this.isDeleting) {
             this.txt = fullTxt.substring(0, this.txt.length - 1);
@@ -46,8 +47,8 @@ const LandingPage = () => {
 
         this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
 
-        var that = this;
-        var delta = 200 - Math.random() * 100;
+        const that = this;
+        let delta = 200 - Math.random() * 100;
 
         if (this.isDeleting) { delta /= 2; }
 
@@ -65,16 +66,29 @@ const LandingPage = () => {
         }, delta);
     };
 
-    window.onload = function() {
-        var elements = document.getElementsByClassName('typewriter');
-        for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
-            if (toRotate) {
-                new TxtType(elements[i], JSON.parse(toRotate), period);
-            }
-        }
-    };
+    useLayoutEffect(() => {
+        const delay = 2000;
+
+        const initializeWithDelay = () => {
+            setTimeout(() => {
+                const elements = document.getElementsByClassName('typewriter');
+                for (let i = 0; i < elements.length; i++) {
+                    const toRotate = elements[i].getAttribute('datatype');
+                    const period = elements[i].getAttribute('data-period');
+                    if (toRotate) {
+                        new TxtType(elements[i], JSON.parse(toRotate), period);
+                    }
+                }
+            }, delay);
+        };
+
+        window.addEventListener('load', initializeWithDelay);
+
+        return () => {
+            window.removeEventListener('load', initializeWithDelay);
+        };
+    }, []);
+
     const [hasVisitedBefore, setHasVisitedBefore] = useState(false);
 
     useEffect(() => {
@@ -85,9 +99,10 @@ const LandingPage = () => {
             const timeout = setTimeout(() => {
                 setHasVisitedBefore(true);
                 sessionStorage.setItem('hasVisitedBefore', 'true');
-            }, 5000);
+            }, 4000);
             return () => clearTimeout(timeout);
         }
+
     }, [hasVisitedBefore]);
 
     return (
@@ -122,7 +137,7 @@ const LandingPage = () => {
                     <div className={`typing-wrapper ${inView ? 'fade-in' : 'fade-out'}`}>
 
                         <p className="typewriter" data-period="2000" data-delay-before-start="500"
-                           data-type='["Full-Stack Developer", "Java and JavaScript", "Spring and React", "Anime Fan", "Gym Addicted"]'>
+                           datatype='["Full-Stack Developer", "Java and JavaScript", "Spring and React", "Anime Fan", "Gym Addicted"]'>
                             <span className="wrap"></span>
                         </p>
                     </div>

@@ -7,13 +7,6 @@
 
   color:#fff;
 }
-@font-face {
-  font-family: 'minimal';
-  src: url('../public/Fonts/minimal/minimal.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
 * {
   font-family: 'minimal', sans-serif
 }

@@ -11,16 +11,17 @@ const Project = ({ name, tags, githubRepo, descriptionKey, link, image}) => {
         borderTopLeftRadius: '10px',
         borderBottomLeftRadius: '10px',
     };
-
+    const handleProjectClick = () => {
+        window.open(link, '_blank');
+    };
     return (
-        <div className="project">
-            <a href={link} target="_blank" rel="noopener noreferrer"  aria-label="Project Link">>
+        <div className="project" onClick={handleProjectClick} style={{ cursor: 'pointer' }}>
                 <div className="project-image" style={projectImageStyle}></div>
                 <div className="project-details ">
                     <div className="projects-head-wrapper overflow-y">
                         <h2>{name}</h2>
                         <span className="github-Repo">
-                            <a href={githubRepo} target="_blank" rel="noopener noreferrer"  aria-label="Github Repo-Link">>
+                            <a href={githubRepo} target="_blank" rel="noopener noreferrer"  aria-label="Github Repo-Link">
                                 <FaGithub/> {name} Repository
                             </a>
                         </span>
@@ -35,7 +36,6 @@ const Project = ({ name, tags, githubRepo, descriptionKey, link, image}) => {
                         </ul>
                     </div>
                 </div>
-            </a>
         </div>
     )
     ;

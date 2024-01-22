@@ -2,7 +2,7 @@ import React from 'react';
 import './About.scss';
 import BackgroundAbout from "../../containerElements/Backgrounds/BackgroundAbout";
 import { useInView } from "react-intersection-observer";
-import {FaGithub, FaInstagram, FaTwitter} from "react-icons/fa";
+import {FaGithub, FaInstagram, FaTwitter} from "react-icons/fa6";
 import {useTranslation} from "react-i18next";
 import {FaXing} from "react-icons/fa6";
 
@@ -34,7 +34,8 @@ const AboutPage = () => {
         { word: '', icon: '', newLine: true },
         { word: t('aboutMe.contact'), icon: '📧', newLine: true },
         { word: '', icon: '', newLine: true },
-        { word: t('aboutMe.lookingForward'), icon: '', newLine: false },
+        { word: t('aboutMe.lookingForward'), icon: '', newLine: true },
+        { word: t('aboutMe.feedback'), icon: '', newLine: false },
     ];
 
     return (
@@ -44,23 +45,23 @@ const AboutPage = () => {
                 <h1 className={`about-header ${inView ? 'fade-in' : 'fade-out'}`}>{t('aboutMe.headline')}</h1>
                 <div className="content-and-Image-wrapper">
                     <div className={`about-me-content ${inView ? 'fade-in' : 'fade-out'}`}>
-                        <p className="about-text overflow-y">
-                            {content.map((entry, wordIndex) =>
-                                <>
-                                    <span key={wordIndex} style={{
+                        <div className="about-text overflow-y">
+                            {content.map((entry, wordIndex) => (
+                                <React.Fragment key={wordIndex}>
+                                    <span style={{
                                         display: 'inline-block',
                                         marginRight: '5px',
                                         animation: inView ? `appear 2s ease ${wordIndex / 2}s forwards` : `leave 0.25s ease`
                                     }}>{entry.icon}{entry.word}
                                     </span>
                                     {entry.subItems && entry.subItems.map((subItem, subIndex) => (
-                                        <div key={subIndex} style={{marginLeft: '36px'}}>
+                                        <div key={subIndex} style={{ marginLeft: '36px' }}>
                                             <span style={{
                                                 display: 'inline-block',
                                                 marginRight: '5px',
                                                 animation: inView ? `appear 2s ease ${subIndex / 2 + wordIndex / 2}s forwards` : `leave 0.25s ease`
                                             }}>
-                                                {subItem.word}{subItem.word && <br/>}
+                                                {subItem.word}{subItem.word && <br />}
                                             </span>
                                             {subItem.subItems && subItem.subItems.map((subSubItem, subSubIndex) => (
                                                 <div key={subSubIndex} style={{
@@ -74,15 +75,15 @@ const AboutPage = () => {
                                                     }}>
                                                         {subSubItem.word}
                                                     </span>
-                                                    <br/>
+                                                    <br />
                                                 </div>
                                             ))}
                                         </div>
                                     ))}
-                                    <br/>
-                                </>
-                            )}
-                        </p>
+                                    <br />
+                                </React.Fragment>
+                            ))}
+                        </div>
                     </div>
                     <div className={`about-me-image-wrapper ${inView ? 'fade-in' : 'fade-out'}`}>
                         <img

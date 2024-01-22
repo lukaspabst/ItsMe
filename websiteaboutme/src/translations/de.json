@@ -32,17 +32,17 @@
     }
   },
   "aboutMe": {
-    "yourInterestsOrProfession": "deine Interessen oder Beruf",
     "greeting": "Hi, ich bin Lukas Pabst, ein Softwareentwickler aus Mühlhausen/Thüringen.",
     "work": "Derzeit arbeite ich als Softwareentwickler bei Finanz-Data GmbH, Gotha.",
     "myCurrentFocus": "Meine Schwerpunkte liegen in: ",
     "backendDevelopment": "Backend-Entwicklung mit Java",
     "restServiceDevelopment": "Entwicklung von REST-Services mit Java und Spring Boot",
-    "education": "Bachelor in Wirtschaftsinformatik",
+    "education": "Mein Studium in Wirtschaftsinformatik habe ich mit einem Bachelor-Abschluss abgeschlossen.",
     "languages": "Fließend in Deutsch (Muttersprache) und sicher in Englisch (schriftlich und mündlich).",
     "hobbies": "Zu meinen Hobbys gehören Kraftsport, Programmieren und Lesen.",
-    "contact": "Kontaktieren Sie mich unter lukas.pabst.business@outlook.de oder benutzen Sie die eingebaute Kontakt Komponente",
-    "lookingForward": "Freue mich darauf, Kontakte zu knüpfen und spannende Möglichkeiten zu besprechen!"
+    "contact": "Kontaktieren Sie mich unter lukas.pabst.business@outlook.de oder benutzen Sie die eingebaute Kontakt Komponente.",
+    "lookingForward": "Freue mich darauf, Kontakte zu knüpfen und spannende Möglichkeiten zu besprechen!",
+    "feedback": "Zusätzlich freue ich mich über jedes Feedback, das Sie möglicherweise zu meiner Website haben."
   },
   "copyright": "2024 Alle Rechte vorbehalten."
 }

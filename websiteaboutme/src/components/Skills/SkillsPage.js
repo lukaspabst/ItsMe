@@ -3,7 +3,7 @@ import {useInView} from "react-intersection-observer";
 import {useTranslation} from "react-i18next";
 import BackgroundSkills from "../../containerElements/Backgrounds/BackgroundSkills";
 import './SkillsPage.scss';
-import {FaFileDownload} from "react-icons/fa";
+import {FaDownload} from "react-icons/fa6";
 import Skill from "./Skill";
 
 const SkillPage = () => {
@@ -12,7 +12,7 @@ const SkillPage = () => {
         triggerOnce: false
     });
     const [isClicked, setIsClicked] = useState(false);
-    const { t } = useTranslation();
+    const {t, i18n} = useTranslation();
     const skillsContent = [
         { name: 'HTML', icon: <img src="/Icons/HTML5.svg" alt="HTML5"/>, percentage: 90},
         {name: 'Java', icon: <img src="/Icons/Java.svg" alt="Java"/>,  percentage: 85 },
@@ -74,11 +74,11 @@ const SkillPage = () => {
                 </div>
                 <div className="download-cv-container">
                     <div className={`button-wrapper ${inView ? 'scale-up' : 'scale-down'}`}>
-                        <a href="/CV/Dummy.pdf" download
+                        <a href={`/CV/CV_Lukas_Pabst_${i18n.language.toUpperCase()}.pdf`} download
                            className={`button-cv-download ${isClicked ? 'deactivated' : ''}`} onClick={handleClick}>
                             {!isClicked ? (
                                 <>
-                                    <FaFileDownload/>
+                                    <FaDownload/>
                                     <h1>{t('skillsPage.downloadCV')}</h1>
                                 </>
                             ) : (

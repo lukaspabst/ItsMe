@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="preload" as="font" href="/Fonts/minimal/minimal.woff2" type="font/woff2" crossorigin="anonymous">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Full-Stack Developer Lukas Pabst "
-    />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Full-Stack Developer Lukas Pabst ">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <link rel="manifest" href="/manifest.json" />
+  <link rel="manifest" href="/manifest.json" />
 
-    <title>Lukas Pabst</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+  <title>Lukas Pabst</title>
+</head>
+<body>
+<script>
+  window.addEventListener('load', () => {
+    fetch('/Fonts/minimal/minimal.woff2')
+            .then(response => response.arrayBuffer())
+            .then(buffer => {
+              const font = new FontFace('minimal', buffer, { style: 'normal', weight: 'normal', display: 'swap' });
+              return font.load().then(() => {
+                document.fonts.add(font);
+              });
+            })
+            .catch(error => console.error('Font loading failed:', error));
+  });
+</script>
+
+
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+</body>
 </html>

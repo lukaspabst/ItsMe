@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Link} from "react-router-dom";
 import './Header.scss';
 import styled, { keyframes } from 'styled-components';
@@ -42,6 +42,27 @@ const Header = () => {
         setShowDropdown(false);
         window.location.reload();
     };
+    const menuRef = useRef(null);
+
+    useEffect(() => {
+        const handleOutsideInteraction = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsActive(false);
+            }
+        };
+
+        if (isActive) {
+            document.addEventListener('click', handleOutsideInteraction);
+            document.addEventListener('touchstart', handleOutsideInteraction);
+        }
+
+        return () => {
+            document.removeEventListener('click', handleOutsideInteraction);
+            document.removeEventListener('touchstart', handleOutsideInteraction);
+        };
+    }, [isActive]);
+
+
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);
     };
@@ -111,7 +132,7 @@ const Header = () => {
                 <div className="menu-desktop-header">
                     <ul>
                         <li className="dropdown-container">
-                            <button className="dropdown-button" aria-label="Language Dropdown" onClick={toggleDropdown}>
+                            <button className="dropdown-button" aria-label="Current Language and Dropdown" onClick={toggleDropdown}>
                                 {i18n.language.toUpperCase()}
                             </button>
                             {showDropdown && (
@@ -169,11 +190,10 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="menu-mobile-header">
-
+                <div className="menu-mobile-header" ref={menuRef}>
                     <div className="dropdown-container">
                         <div>
-                            <button className="dropdown-button" aria-label="Language Dropdwon" onClick={toggleDropdown}>
+                            <button className="dropdown-button" aria-label="Current Language and Dropdown" onClick={toggleDropdown}>
                                 {i18n.language.toUpperCase()}
                             </button>
                             </div>
@@ -184,7 +204,6 @@ const Header = () => {
                                 </div>
                             )}
                         </div>
-
                     <CustomBarsIcon onIconClick={toggleMobileMenu} isActive={isActive} setIsActive={setIsActive}/>
                 </div>
 

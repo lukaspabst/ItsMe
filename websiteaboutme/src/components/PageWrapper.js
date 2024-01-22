@@ -168,38 +168,34 @@ function PageWrapper() {
 
     return (
         <div>
-            {
-                state.currentPage > 1 && (
-                    <button className="pagewrapper-prevButton" aria-label="Previous page" onClick={handlePrev}>
-                        <CustomArrowIconUP/>
-                    </button>
-                )
-            }
+            {state.currentPage > 1 && (
+                <button className="pagewrapper-prevButton" aria-label="Previous page" onClick={handlePrev}>
+                    <CustomArrowIconUP/>
+                </button>
+            )}
             <div id="landingPage" ref={sectionRefs.LandingPage}>
-                <LandingPage ref={sectionRefs.LandingPage}/>
+                <LandingPage />
             </div>
             <div id="about" ref={sectionRefs.AboutPage}>
-                <AboutPage ref={sectionRefs.AboutPage}/>
+                <AboutPage />
             </div>
             <div id="skills" ref={sectionRefs.SkillsPage}>
-                <SkillsPage ref={sectionRefs.SkillsPage}/>
+                <SkillsPage />
             </div>
             <div id="projects" ref={sectionRefs.ProjectsPage}>
-                <ProjectsPage ref={sectionRefs.ProjectsPage}/>
+                <ProjectsPage />
             </div>
             <div id="contact" ref={sectionRefs.ContactPage}>
-                <ContactPage ref={sectionRefs.ContactPage}/>
+                <ContactPage />
             </div>
-            {
-                state.currentPage < sectionsOrder.length && (
-                    <button
-                        className={`pagewrapper-nextButton ${state.currentPage === 2 ? "about-next-button" : ""}`}
-                        onClick={handleNext} aria-label="Next page"
-                    >
-                        <CustomArrowIconDown/>
-                    </button>
-                )
-            }
+            {state.currentPage < sectionsOrder.length && (
+                <button
+                    className={`pagewrapper-nextButton ${state.currentPage === 2 ? "about-next-button" : ""}`}
+                    onClick={handleNext} aria-label="Next page"
+                >
+                    <CustomArrowIconDown/>
+                </button>
+            )}
         </div>
     );
 }

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import './WelcomeAnimation.scss';
-import {useTranslation} from "react-i18next"; // Add your welcome animation styles here
+import {useTranslation} from "react-i18next";
 
 const WelcomeAnimation = () => {
     const { t } = useTranslation();

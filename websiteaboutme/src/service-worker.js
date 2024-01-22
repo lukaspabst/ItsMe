@@ -3,14 +3,14 @@ import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
-import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
+import { CacheFirst } from 'workbox-strategies';
 
-const VERSION = 'v2'; // Update this value when you make changes
+const VERSION = 'v2';
 
 clientsClaim();
 
 precacheAndRoute(self.__WB_MANIFEST, {
-    cacheId: `lukas-pabst-${VERSION}`, // Use a unique cacheId including the version
+    cacheId: `lukas-pabst-${VERSION}`,
 });
 
 const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$');
@@ -32,7 +32,7 @@ registerRoute(
         url.origin === self.location.origin &&
         (url.pathname.endsWith('.webp') || url.pathname.endsWith('.svg')),
     new CacheFirst({
-        cacheName: `images-${VERSION}`, // Update the cacheName for images
+        cacheName: `images-${VERSION}`,
         plugins: [new ExpirationPlugin({ maxEntries: 50, maxAgeSeconds: 30 * 24 * 60 * 60 })],
     })
 );

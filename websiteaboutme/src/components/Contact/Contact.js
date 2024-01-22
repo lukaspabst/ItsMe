@@ -88,12 +88,13 @@ const ContactForm = ({ onSubmit, submitted }) => {
             </div>
             <div className="form-message">
                 <label>
-          <textarea
-              id="message" name="message"
-              value={formData.message}
-              onChange={handleInputChange}
-              required
-          />
+                      <textarea
+                          id="message"
+                          name="message"
+                          value={formData.message}
+                          onChange={handleInputChange}
+                          required
+                      />
                 </label>
             </div>
 

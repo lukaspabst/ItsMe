@@ -33,16 +33,17 @@
   },
   "aboutMe": {
     "headline": "About Me",
-    "greeting": "Hi, I'm Lukas Pabst, a Software Developer based in Mühlhausen/Thüringen.",
-    "work": "Currently working as a Software Developer at Finanz-Data GmbH, Gotha.",
-    "myCurrentFocus": "Currently, my work is centered around: ",
-    "backendDevelopment": "Backend-Development with Java",
-    "restServiceDevelopment": "REST-Service-Development with Java and Spring Boot",
-    "education": "Bachelor degree in Business Informatics",
-    "languages": "Fluent in German (native) and proficient in English (written and spoken).",
-    "hobbies": "Hobbies include weightlifting, programming and reading.",
-    "contact": "Reach out to me at lukas.pabst.business@outlook.de or use the build in Contact",
-    "lookingForward": "Looking forward to connecting and discussing exciting opportunities!"
+    "greeting": "Hello, my name is Lukas Pabst, and I am a Software Developer based in Mühlhausen/Thüringen.",
+    "work": "I am currently employed as a Software Developer at Finanz-Data GmbH in Gotha.",
+    "myCurrentFocus": "My current work revolves around: ",
+    "backendDevelopment": "Backend development with Java",
+    "restServiceDevelopment": "REST service development with Java and Spring Boot",
+    "education": "I hold a Bachelor's degree in Business Informatics.",
+    "languages": "I am fluent in German (native) and proficient in English, both in writing and speaking",
+    "hobbies": "My hobbies include weightlifting, programming, and reading.",
+    "contact": "For professional inquiries or to discuss potential collaborations and opportunities, please feel free to contact me via email at lukas.pabst.business@outlook.de or through the provided contact mechanism.",
+    "lookingForward": "I am looking forward to connecting with you and discussing exciting opportunities!",
+    "feedback": "Additionally, I welcome any feedback you may have about my website."
   },
   "copyright": "2024 All rights reserved."
 }

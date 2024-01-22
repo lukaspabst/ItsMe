@@ -9,11 +9,14 @@ const port = 3001;
 const emailUser = process.env.REACT_APP_EMAIL_USER;
 
 app.use(bodyParser.json());
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'Server is healthy' });
+});
 
 app.use((req, res, next) => {
     // Set up CORS headers based on your needs
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
