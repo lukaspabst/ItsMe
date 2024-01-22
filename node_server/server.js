@@ -11,6 +11,7 @@ const emailUser = process.env.REACT_APP_EMAIL_USER;
 app.use(bodyParser.json());
 app.get('/health', (req, res) => {
     res.status(200).json({ status: 'Server is healthy' });
+    console.log(`Server is healthy`);
 });
 
 app.use((req, res, next) => {
