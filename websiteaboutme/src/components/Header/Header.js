@@ -46,18 +46,16 @@ const Header = () => {
 
     useEffect(() => {
         const handleOutsideInteraction = (event) => {
-            if (menuRef.current && !menuRef.current.contains(event.target)) {
+            if (isActive && menuRef.current && !menuRef.current.contains(event.target)) {
                 setIsActive(false);
             }
         };
 
-        if (isActive) {
-            document.addEventListener('click', handleOutsideInteraction);
-            document.addEventListener('touchstart', handleOutsideInteraction);
-        }
+        document.addEventListener('mousedown', handleOutsideInteraction);
+        document.addEventListener('touchstart', handleOutsideInteraction);
 
         return () => {
-            document.removeEventListener('click', handleOutsideInteraction);
+            document.removeEventListener('mousedown', handleOutsideInteraction);
             document.removeEventListener('touchstart', handleOutsideInteraction);
         };
     }, [isActive]);
@@ -190,7 +188,7 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="menu-mobile-header" ref={menuRef}>
+                <div className="menu-mobile-header">
                     <div className="dropdown-container">
                         <div>
                             <button className="dropdown-button" aria-label="Current Language and Dropdown" onClick={toggleDropdown}>
@@ -208,7 +206,7 @@ const Header = () => {
                 </div>
 
                 {isActive && (
-                    <div className="mobile-menu">
+                    <div className="mobile-menu" ref={menuRef}>
                         <ul>
                             <AnimatedLi delay="0s">
                                 <Link onClick={() => {
