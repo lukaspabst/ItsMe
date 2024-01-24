@@ -5,7 +5,7 @@ import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
 import { CacheFirst } from 'workbox-strategies';
 
-const VERSION = 'v2';
+const VERSION = 'v2.1';
 
 clientsClaim();
 
