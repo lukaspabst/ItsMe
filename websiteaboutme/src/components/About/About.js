@@ -86,6 +86,8 @@ const AboutPage = () => {
                         </div>
                     </div>
                     <div className={`about-me-image-wrapper ${inView ? 'fade-in' : 'fade-out'}`}>
+                        <div className={`background-image ${inView ? 'scale-up' : 'scale-down'}`}>
+                        </div>
                         <img
                             src="/assets/pictures/ItsMe.webp"
                             alt="Me"
