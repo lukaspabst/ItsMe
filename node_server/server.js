@@ -15,7 +15,6 @@ app.get('/health', (req, res) => {
 });
 
 app.use((req, res, next) => {
-    // Set up CORS headers based on your needs
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -51,7 +50,7 @@ app.post('/submitForm', async (req, res) => {
         const mailOptionsToUser = {
             from: {
                 address: `${emailUser}`,
-                name: 'Lukas Pabst', // Replace with your name
+                name: 'Lukas Pabst',
             },
             to: email,
             subject: language === 'DE' ? 'Ich habe deine Nachricht erhalten' : 'I received your message',
